@@ -1,0 +1,52 @@
+<h1 class="mat-h1">Card</h1>
+        <mat-grid-list *ngIf="cols$ | async as cols" [cols]="cols[0].cols" rowHeight="350px">
+          <mat-grid-tile>
+            <app-progress-card [values]="progressCard1"></app-progress-card>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <app-spinner-card [values]="progressCard2"></app-spinner-card>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <app-apex-chart [options]="angleCircleOptions"></app-apex-chart>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <app-apex-chart [options]="radarChartOptions"></app-apex-chart>
+          </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list *ngIf="cols$ | async as cols" [cols]="cols[1].cols"  rowHeight="350px">
+    <mat-grid-tile>
+      <app-apex-chart [options]="basicColumnChartOptions"></app-apex-chart> 
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <app-apex-chart [options]="lineChartOptions"></app-apex-chart>
+    </mat-grid-tile>
+    
+</mat-grid-list>
+<h1 class="mat-h1">Transparent</h1>
+<mat-grid-list *ngIf="cols$ | async as cols" [cols]="cols[0].cols" rowHeight="350px">
+  
+  <mat-grid-tile>
+    <app-apex-chart [options]="angleCircleOptionsTransparent" mode="transparent"></app-apex-chart>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <app-apex-chart [options]="radarChartOptionsTransparent" mode="transparent"></app-apex-chart>
+  </mat-grid-tile>
+  
+  <mat-grid-tile [colspan]="cols[1].cols">
+    <app-apex-chart [options]="lineChartOptionsTransparent" mode="transparent"></app-apex-chart>
+  </mat-grid-tile>
+</mat-grid-list>
+<h1 class="mat-h1">Box</h1>
+<mat-grid-list *ngIf="cols$ | async as cols" [cols]="cols[0].cols" rowHeight="350px">
+  
+  <mat-grid-tile class="bd-1">
+    <app-apex-chart [options]="angleCircleOptionsBox" mode="box"></app-apex-chart>
+  </mat-grid-tile>
+  <mat-grid-tile class="bd-1">
+    <app-apex-chart [options]="radarChartOptionsBox" mode="box"></app-apex-chart>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="cols[1].cols" class="bd-1">
+    <app-apex-chart [options]="lineChartOptionsBox" mode="box"></app-apex-chart>
+  </mat-grid-tile>
+</mat-grid-list>
+

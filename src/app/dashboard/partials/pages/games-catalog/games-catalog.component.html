@@ -1,0 +1,26 @@
+<h1 class="mat-h1">Games Catalog</h1>
+
+        <mat-grid-list *ngIf="cols$ | async as cols" [cols]="cols[0].cols" rowHeight="350px" >
+          <mat-grid-tile [colspan]="getColspan(cols[0].cols)">
+            <app-game-card [game]="demo" mode="box" [banner]="isBanner"></app-game-card>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <app-last-messages></app-last-messages>
+          </mat-grid-tile>
+            
+  </mat-grid-list>
+  <h2 class="mat-h2">Trending Games</h2>
+  <mat-grid-list *ngIf="cols$ | async as cols" [cols]="cols[1].cols" rowHeight="250px">
+    <mat-grid-tile>
+      <app-games-carousel [games]="games" mode="transparent" [visibleItems]="carouselItems" [step]="carouselStep"></app-games-carousel>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <h2 class="mat-h2">Most Downloaded</h2>
+<mat-grid-list *ngIf="cols$ | async as cols" [cols]="cols[2].cols"  rowHeight="250px">
+    <mat-grid-tile >
+      <app-games-carousel [games]="games" mode="transparent" [visibleItems]="carouselItems" [step]="carouselStep"></app-games-carousel>
+    </mat-grid-tile>
+    
+    
+</mat-grid-list>
+

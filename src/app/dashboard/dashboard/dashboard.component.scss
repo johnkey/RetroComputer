@@ -1,0 +1,31 @@
+mat-drawer.mat-drawer-side {
+  border-right-style: none !important;
+}
+
+mat-drawer-container{
+  height: 98%;
+  max-height: calc(100vh - var(--mat-toolbar-standard-height));
+  overflow: none;
+  box-sizing:border-box;
+}
+
+
+.spacer{
+  flex: 1 1 auto;
+}
+.block{
+  display: block;
+}
+.oldscreeneffect{
+  
+  h1 {
+    width: 100%;
+    text-align:center;
+  }
+
+}
+mat-slide-toggle{
+  margin-left: 5px;
+}
+
+

@@ -1,0 +1,35 @@
+<mat-card class="dashboard-card" [ngClass]="mode">
+
+    <mat-card-content class="dashboard-card-content">
+        <div [fxLayout]="banner ? 'row' : 'column'" fxLayoutGap="8px">
+            <div class="game-image" [fxFlex]="banner ? '70' : '60'" >
+                <img src="/../../../../../assets/images/{{game.image}}" alt="{{game.title}}" [ngClass]="banner ? 'fill' : ''">
+            </div>
+            <div [fxFlex]="banner ? '30' : '40'" fxLayout="column" class="game-data" fxLayoutGap="8px">
+                <div class="game-title" [fxFlex]="banner ? '10' : 'none'">{{game.title}} </div>
+                <div *ngIf="banner" class="game-description" fxFlex="60">{{game.description}} </div>
+                <div *ngIf="!banner" class="game-pricing" fxLayout="row" fxFlex="50">
+                    Price:
+                    <span [ngClass]="{'crossed-out': game.offer}" fxFlex> {{game.price}}$</span>
+                    <div *ngIf="game.offer" fxFlex >
+                        <span class="game-offer">
+                            {{game.offer}}%
+                        </span>
+                    </div>
+                    <span *ngIf="game.offer" fxFlex>{{game.price - (game.price * game.offer / 100)}}$</span>
+                </div>
+                <button *ngIf="banner" mat-stroked-button fxFlex="10" color="primary">Try It!</button>
+                <div  class="game-statistics" [fxFlex]="banner ? '10' : '30'" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div class="game-downloads">{{game.downloads}} Downloads</div>
+                    <div class="game-rating">
+                        <ng-container *ngFor="let star of getStars(game.rating ?? 0); let i = index">
+                            <mat-icon [ngClass]="{'filled': star, 'outlined': !star}" class="rating-star">star</mat-icon>
+                        </ng-container>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+      
+    </mat-card-content>
+</mat-card>

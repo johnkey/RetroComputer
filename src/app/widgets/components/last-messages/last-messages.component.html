@@ -1,0 +1,19 @@
+<mat-card class="transparent">
+    <mat-card-title>Last Messages</mat-card-title>
+    <mat-card-content fxLayout="column">
+        <!-- Lista de mensajes -->
+        <div class="boxed messages-container" #messageContainer>
+            <mat-list>
+                
+                <mat-list-item *ngFor="let message of messages">
+                <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="start center">
+                    <div fxFlex="none" matLine class="nick">{{ message.sender }}</div>
+                    <div fxFlex matLine>{{ message.text }}</div>
+                </div>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    
+        
+    </mat-card-content>
+  </mat-card>

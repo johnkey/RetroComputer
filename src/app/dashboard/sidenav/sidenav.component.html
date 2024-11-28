@@ -1,0 +1,85 @@
+
+<div class="sidenav-theme" fxLayout="column">
+    <mat-divider></mat-divider>
+    <mat-card class="user-card" fxFlex="10">
+        <mat-card-content>
+            <div  fxLayout="row" fxLayout.sm="column" fxLayoutGap="10px">
+                <div fxFlex="52px">
+                    <img mat-card-image src="assets/images/user.jpg" alt="User">
+                </div>
+                <div fxFlex>
+                    <p>Luis Moreno Sánchez</p>
+                    <p>software engineer</p>
+                    <p><span class="bullet-dot"></span> conected</p>
+                    
+                </div>
+                <div fxFlex="52px">
+                  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                      <mat-icon>settings</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu" xPosition="after">
+                      <button mat-menu-item>Profile</button>
+                      <button mat-menu-item>Account</button>
+                      <button mat-menu-item>Logout</button>
+                    </mat-menu>
+              </div>
+                
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-divider></mat-divider>
+    <!-- menu tree Mode -->
+    <!-- <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <button mat-icon-button disabled></button>
+        {{node.item}}
+      </mat-tree-node>
+      <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+        <button mat-icon-button
+                [attr.aria-label]="'Toggle ' + node.item" matTreeNodeToggle>
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}:
+          </mat-icon>
+        </button>
+        {{node.item}}
+        <mat-progress-bar *ngIf="node.isLoading"
+              mode="indeterminate"
+              class="loading-menu"></mat-progress-bar>
+        
+      </mat-tree-node>
+    </mat-tree> -->
+    
+
+    <!-- menu expansion panel mode -->
+    
+      
+     
+      <mat-accordion fxFlex="75">
+        <mat-expansion-panel *ngFor="let option of this.dataSource.data" class="menu-accordion" (opened)="disableOptions()"
+                                                                                                (closed)="disableOptions()">
+            <mat-expansion-panel-header class="menu-expansion-header">  
+              <mat-panel-title >
+                <mat-icon matListItemIcon routerLinkActive>{{option.icon}}</mat-icon>
+                {{option.item}}
+              </mat-panel-title> 
+            </mat-expansion-panel-header>
+            <div class="menu-expansion-body"> 
+              <mat-selection-list MatListOption [multiple]="false" hideSingleSelectionIndicator=true>
+                <mat-list-option *ngFor="let subOpt of this.database.getChildren(option.item)" routerLink="{{subOpt.link}}"> 
+                  <mat-icon matListItemIcon>{{subOpt.icon}}</mat-icon>
+                  <div matListItemTitle >{{subOpt.item}}</div>
+                  <!-- <a matListItemTitle>{{subOpt.item}} >:_</a> -->
+                </mat-list-option>
+              </mat-selection-list>            
+            </div>      
+        </mat-expansion-panel>
+      </mat-accordion>
+      
+      
+        <div class="sidenav-footer" fxFlex="15">
+        
+                    <button mat-raised-button color="primary" (click)="openDialog()">Show Console</button>
+        
+        </div>
+   
+</div>

@@ -1,0 +1,47 @@
+
+<h1 class="mat-h1">Card</h1>
+        <mat-grid-list *ngIf="cols$ | async as cols" [cols]="cols[0].cols" rowHeight="350px">
+          <mat-grid-tile>
+            <app-ngx-heat-map title="Time Range Heat Map" [options]="heatMapOptions"></app-ngx-heat-map>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="2">
+            <app-ngx-advanced-pie-chart title="Countries" [options]="advancedPieOptios"></app-ngx-advanced-pie-chart>
+          </mat-grid-tile>
+         
+          <mat-grid-tile>
+            <app-ngx-line-chart itle="Time Range Line Chart" [options]="lineChartOptions"></app-ngx-line-chart>
+          </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list *ngIf="cols$ | async as cols" [cols]="cols[1].cols"  rowHeight="350px">
+    <mat-grid-tile>
+      <app-ngx-grid-pie-chart  [options]="gridPieOptions"></app-ngx-grid-pie-chart>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <app-ngx-vertical-bar-chart [options]="verticalBarOptions"></app-ngx-vertical-bar-chart>
+    </mat-grid-tile>
+    
+</mat-grid-list>
+<h1 class="mat-h1">Transparent</h1>
+        <mat-grid-list *ngIf="cols$ | async as cols" [cols]="cols[0].cols" rowHeight="350px">
+          <mat-grid-tile>
+            <app-ngx-heat-map title="Time Range Heat Map" [options]="heatMapOptions" mode="transparent"></app-ngx-heat-map>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="2">
+            <app-ngx-advanced-pie-chart title="Countries" [options]="advancedPieOptios" mode="transparent"></app-ngx-advanced-pie-chart>
+          </mat-grid-tile>
+         
+          <mat-grid-tile>
+            <app-ngx-horizontal-bar-chart [options]="horizontalBarOptions" mode="transparent"></app-ngx-horizontal-bar-chart>
+          </mat-grid-tile>
+  </mat-grid-list>
+  
+<h1 class="mat-h1">Box</h1>
+<mat-grid-list *ngIf="cols$ | async as cols" [cols]="cols[1].cols"  rowHeight="350px">
+  <mat-grid-tile>
+    <app-ngx-grid-pie-chart  [options]="gridPieOptions" mode="box"></app-ngx-grid-pie-chart>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <app-ngx-vertical-bar-chart [options]="verticalBarOptions" mode="box"></app-ngx-vertical-bar-chart>
+  </mat-grid-tile>
+  
+</mat-grid-list>

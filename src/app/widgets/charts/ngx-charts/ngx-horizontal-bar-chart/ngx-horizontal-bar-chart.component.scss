@@ -1,0 +1,53 @@
+:host{
+
+  height: 100%;
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.dashboard-card {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  //flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard-card-content{
+  height: 100%;
+  width: 100%;
+}
+  .more-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+
+mat-card-content,.apexcharts-legend{
+  height: 100%;
+  text-align: left;
+  
+}
+mat-card-content > div{
+  height: 100%;
+  margin-top: 1.5em;
+}
+.transparent{
+  background: transparent;
+}
+.box{
+  background: transparent;
+  border: 4px solid ;
+}
+
+::ng-deep .x.axis text {
+    fill: var(--mdc-theme-primary); 
+    
+  }
+  
+  /* Cambiar color de las etiquetas del eje Y */
+  ::ng-deep .y.axis text {
+    fill: var(--mdc-theme-primary); 
+    
+  }

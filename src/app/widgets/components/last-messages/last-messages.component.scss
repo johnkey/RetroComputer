@@ -1,0 +1,69 @@
+mat-card {
+    display: flex;
+    flex-direction: column; 
+    height: 100%; 
+    flex:1;
+    max-height: 100%;
+}
+
+  
+    mat-card-title {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    mat-card-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1; 
+        height: 100%; 
+        max-height: 100%;
+        overflow-y: auto; 
+      }
+  
+    .messages-container {
+        flex: 1;
+        overflow-y: scroll; 
+        
+        display: flex;
+        flex-direction: column; 
+        max-height: 100%;
+
+    }
+    mat-list {
+        width: 100%;
+      }
+      mat-form-field {
+        flex: 1; 
+      }
+    
+  
+ 
+
+  .transparent{
+    background: transparent;
+  }
+  .boxed {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    
+    background: transparent; 
+    border: 4px solid; 
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+
+ 
+
+  .nick::after{
+    content: ":\\>";
+  }
+  
+
+  
+
+

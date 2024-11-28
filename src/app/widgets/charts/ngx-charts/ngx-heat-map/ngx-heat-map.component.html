@@ -1,0 +1,25 @@
+<mat-card class="dashboard-card" [ngClass]="mode">
+    <mat-card-header>
+      <mat-card-title>
+        {{title}}
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+        <div #chart *ngIf="chartOptions != undefined">
+            <ngx-charts-heat-map
+                [view]="chartOptions.view"
+                [scheme]="chartOptions.colorScheme"
+                [legend]="chartOptions.legend"
+                [showXAxisLabel]="chartOptions.showXAxisLabel"
+                [showYAxisLabel]="chartOptions.showYAxisLabel"
+                [xAxis]="chartOptions.xAxis"
+                [yAxis]="chartOptions.yAxis"
+                [xAxisLabel]="chartOptions.xAxisLabel"
+                [yAxisLabel]="chartOptions.yAxisLabel"
+                [results]="chartOptions.results"
+                >
+</ngx-charts-heat-map>
+        </div>
+    </mat-card-content>
+</mat-card>
+

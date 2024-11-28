@@ -1,0 +1,89 @@
+/* modal.component.css */
+.modal-content {
+    background-color: var(--mdc-theme-background);
+    color: var(--mdc-theme-primary); //#00FF00;
+    width: 100%;
+    min-height: 300px;
+    font-family: VT323, monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding:8px !important;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    //padding: 10px;
+  }
+  
+  .modal-header h2 {
+    //font-size: 1.5em;
+    margin: 0;
+  }
+  
+  .close-btn {
+    color: var(--mdc-theme-primary);
+  }
+  
+  .modal-body {
+    //padding: 8px;
+    overflow-y: auto;
+    flex-grow: 1;
+  }
+  
+  .terminal {
+    background-color: var(--mdc-theme-surface);
+    padding: 8px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .command-input {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+  }
+
+  .command-input input::placeholder {
+    color: var(--mdc-theme-primary) !important; 
+    animation: blink 1s infinite; 
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity: 1; 
+    }
+    50% {
+      opacity: 0; 
+    }
+    100% {
+      opacity: 1; 
+    }
+  }
+  
+  .command-input input {
+    background-color: transparent;
+    color: var(--mdc-theme-primary);
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 5px;
+    font-size: 1.2em;
+    font-family: VT323, monospace;
+  }
+
+  .prompt{
+    font-size: 1.2em;
+    font-family: VT323, monospace;
+  }
+  
+  .command-input .prompt {
+    margin-right: 10px;
+    font-weight: bold;
+    
+  }
+  

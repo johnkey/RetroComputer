@@ -1,0 +1,28 @@
+
+<mat-card class="transparent">
+    <mat-card-title>Chat Room</mat-card-title>
+    <mat-card-content fxLayout="column">
+        <!-- Lista de mensajes -->
+        <div class="boxed messages-container" #messageContainer>
+            <mat-list>
+                
+                <mat-list-item *ngFor="let message of messages">
+                <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="start center">
+                    <div fxFlex="none" matLine class="nick">{{ message.sender }}</div>
+                    <div fxFlex matLine>{{ message.text }}</div>
+                </div>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    
+        <!-- Campo de entrada para enviar mensajes -->
+        <div fxLayout="row" style="margin-top: 20px;" fxLayoutGap="8px"> 
+           <mat-form-field  appearance="outline" subscriptSizing="dynamic" class="full-width">
+                <mat-label>Send message</mat-label>
+                <input matInput [(ngModel)]="newMessage" (keydown.enter)="sendMessage()"/>
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="sendMessage()">Enviar</button>
+        </div>
+    </mat-card-content>
+  </mat-card>
+

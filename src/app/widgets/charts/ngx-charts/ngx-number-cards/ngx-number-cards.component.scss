@@ -1,0 +1,47 @@
+:host{
+
+  height: 100%;
+  width: 100%;
+  //padding: 4px;
+  min-width: 250px;
+  
+}
+
+.dashboard-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+  
+  .more-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+
+mat-card-content,.apexcharts-legend{
+  padding-top: 16px;
+  height: 100%;
+  text-align: left;
+  padding-bottom: 0px !important;
+
+}
+mat-card-content > div{
+  height: 100%;
+  //margin-top: 1.5em;
+}
+.transparent{
+  background: transparent;
+}
+.box{
+  background: transparent;
+  border: 4px solid ;
+}
+::ng-deep text {
+    color: var(--mdc-theme-primary); 
+    
+  }
+
+  
+

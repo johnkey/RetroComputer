@@ -1,0 +1,103 @@
+<mat-card class="dashboard-card" [ngClass]="mode">
+    <mat-card-header>
+        <div class="avatar">
+            <div class="masked-image"></div>
+            
+        </div>
+        
+    </mat-card-header>
+    
+    <mat-card-content fxLayout="column" fxLayoutAlign="start stretch">
+      
+      <h2 fxFlex="none" style="text-align: center;" >{{user.nick}}</h2>
+    
+        <form [formGroup]="userForm" novalidate  fxFlex="1" class="retro-form" [ngClass]="{ 'highlight': isEditable }">
+            
+            
+              
+            <div class="form-row">
+              <div fxFlex fxLayout="row">
+                <mat-label>Email</mat-label>
+                <mat-form-field class="full-width" >
+                  <input matInput formControlName="email">
+                </mat-form-field>
+              </div>
+            </div>
+            
+              <div  class="form-row">
+                <div fxFlex fxLayout="row">
+                <mat-label>First&nbsp;name</mat-label>
+                <mat-form-field class="full-width" >
+                  <input matInput formControlName="firstName">
+                  
+                </mat-form-field>
+              </div>
+              </div>
+              <div  class="form-row">
+                <div fxFlex fxLayout="row">
+                  
+                  <mat-label>Last&nbsp;name</mat-label>
+                  <mat-form-field class="full-width" >
+                    <input matInput formControlName="lastName">
+                    
+                  </mat-form-field>
+                
+              </div>
+              </div>
+            
+            <div class="form-row" >
+              <div fxFlex fxLayout="row">
+                <mat-label>Address</mat-label>
+                <mat-form-field class="full-width" >
+                  <textarea matInput formControlName="address"></textarea>
+                  
+                </mat-form-field>
+                </div>
+            </div>
+            
+            <div class="form-row" >
+              <div fxFlex fxLayout="row">
+                <mat-label>State</mat-label>
+                <mat-form-field class="full-width" >
+                  <input matInput formControlName="state">
+                  
+                </mat-form-field>
+              </div>
+              
+            </div>
+            
+           
+            <div class="form-row" >
+              <div fxFlex fxLayout="row">
+                <mat-label>City</mat-label>
+                <mat-form-field class="full-width" >
+                  <input matInput formControlName="city">
+                  
+                </mat-form-field>
+              </div>
+              
+            </div>
+            
+              <div class="form-row">
+                <div fxFlex fxLayout="row">
+                <mat-label>Postal&nbsp;code</mat-label>
+                <mat-form-field class="full-width" >
+                  <input matInput #postalCode  type="string" formControlName="postalCode">
+                  
+                </mat-form-field>
+              </div>
+              </div>
+            
+            
+            <div class="form-row" fxLayoutGap="10px">  
+                <button fxFlex mat-raised-button color="primary" (click)="edit()">
+                  {{ isEditable ? 'Cancel' : 'Edit' }}
+                </button>
+                <button fxFlex mat-raised-button color="accent" (click)="save()" *ngIf="isEditable">
+                  Guardar
+                </button>
+            </div>
+            </form>
+            
+    </mat-card-content>
+</mat-card>

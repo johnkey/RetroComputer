@@ -1,0 +1,28 @@
+<mat-card class="dashboard-card" [ngClass]="mode">
+    <mat-card-header>
+      <mat-card-title>
+        {{title}}
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+        <div #chart *ngIf="chartOptions != undefined">
+            <ngx-charts-bar-horizontal
+                [view]="chartOptions.view"
+                [scheme]="chartOptions.colorScheme"
+                [results]="chartOptions.results"
+                [gradient]="chartOptions.gradient"
+                [xAxis]="chartOptions.showXAxis"
+                [yAxis]="chartOptions.showYAxis"
+                [legend]="chartOptions.showLegend"
+                [showXAxisLabel]="chartOptions.showXAxisLabel"
+                [showYAxisLabel]="chartOptions.showYAxisLabel"
+                [xAxisLabel]="chartOptions.xAxisLabel"
+                [yAxisLabel]="chartOptions.yAxisLabel"
+                [showGridLines]="chartOptions.showGridLines"
+                [roundEdges]="chartOptions.roundEdges"
+                >
+            </ngx-charts-bar-horizontal>
+            
+        </div>
+    </mat-card-content>
+</mat-card>

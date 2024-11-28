@@ -1,0 +1,35 @@
+
+<mat-card class="dashboard-card" [ngClass]="mode">
+    <mat-card-header>
+      <mat-card-title>
+        <h1>{{values.title}}</h1>
+        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu" *ngIf="values.showMenu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item>Expand</button>
+          <button mat-menu-item>Remove</button>
+        </mat-menu>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+      <div fxLayout="row" fxLayoutGap="8px">
+        <div fxFlex="50%" class="progress">
+            <mat-progress-spinner
+            mode="determinate" value="69">
+            </mat-progress-spinner>
+            <span >{{values.progress}}</span>
+        </div>
+        <div fxFlex="50%" fxLayout="column" class="statistics-number">
+            <div fxFlex="50%" >
+                <p>{{values.value}}</p>
+                <p>{{values.text}}</p>
+              </div>
+              <div fxFlex="50%">
+                <span>pendding {{values.pendding}}</span>
+              </div>
+        </div>
+        
+      </div>
+    </mat-card-content>
+</mat-card>

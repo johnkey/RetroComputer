@@ -1,0 +1,31 @@
+<mat-toolbar>
+  <button (click)="drawer.toggle()" mat-icon-button aria-label="icon-button with menu icon">
+    <mat-icon>{{drawer.opened ? 'chevron_left' : 'chevron_right'}}</mat-icon>
+    
+  </button>
+  <!-- <img src="https://docviewerbucket213951-dev.s3.eu-west-1.amazonaws.com/public/logos/logo.png" alt="Logo"> -->
+  <span>:_RetroComputer</span>
+  <span class="spacer"></span>
+  <span>Light</span>
+  <mat-slide-toggle (change)="toggleTheme($event.checked)"></mat-slide-toggle>
+  <button mat-icon-button aria-label="icon-button exit icon" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon> 
+  </button>
+  
+</mat-toolbar>
+
+
+<mat-drawer-container autosize>
+  <mat-drawer #drawer fixedInViewport
+  [attr.role]="(isHandsetSideNav$ | async) ? 'dialog' : 'navigation'"
+  [mode]="(isHandsetSideNav$ | async) ? 'over' : 'side'"
+  [opened]="(isHandsetSideNav$ | async) === false">
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="oldscreeneffect">
+      <router-outlet></router-outlet>
+    
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

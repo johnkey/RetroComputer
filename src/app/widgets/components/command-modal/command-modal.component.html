@@ -1,0 +1,20 @@
+<!-- modal.component.html -->
+<mat-dialog-content class="modal-content">
+    <div class="modal-header">
+      <h2>Command Line</h2>
+      <button mat-icon-button class="close-btn" (click)="close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  
+    <div class="modal-body">
+      <div class="terminal" (click)="focusInput()">
+        <div *ngFor="let line of terminalOutput" class="prompt">{{ line }}</div>
+        <div class="command-input" >
+          <span class="prompt">{{ prompt }}</span>
+          <input [(ngModel)]="command" (keyup.enter)="executeCommand()" placeholder="_" #commandInput/>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  

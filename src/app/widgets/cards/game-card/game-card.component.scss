@@ -1,0 +1,93 @@
+@use '@angular/material' as mat;
+
+@import '../../../../custom-theme.scss';
+
+:host{
+
+  height: 100%;
+  width: 100%;
+  padding: 4px;
+  min-width: 250px;
+  
+}
+
+    .dashboard-card {
+       height: 100%;
+  width: 100%;
+       
+      }
+
+    .dashboard-card-content{
+        overflow: hidden;
+    }
+    .fill{
+        object-fit: fill;
+    }
+      
+      
+
+    mat-card-content{
+      height: 100%;
+      
+    }
+    mat-card-content > div{
+      height: 100%;
+
+    }
+
+   
+    .transparent{
+      background: transparent;
+    }
+    .box{
+      background: transparent;
+      border: 4px solid;
+    }
+    .game-image > img{
+        height: 100%;
+        width: 100%;
+    }
+    
+    .game-title{
+        font-size: 2.0em;
+    }
+    .game-data{
+       height: 100%;
+
+       
+    }
+    .game-pricing{
+        font-size: 1.5em;
+        align-items: center; 
+        }
+        .game-offer{
+            
+            background-color: var(--mdc-theme-primary);
+            color: var(--mdc-theme-surface);
+        }
+    
+    .crossed-out{
+        text-decoration: line-through;
+        
+    }
+    
+    .rating-star {
+        font-size: 16px;
+        color: var(--mdc-theme-primary);
+        display: inline-flex; 
+        justify-content: center; 
+        align-items: center;
+    
+        vertical-align: middle; 
+      }
+      
+      .rating-star.outlined {
+        color: var(--mdc-theme-text-secondary-on-dark);
+      }
+      
+      .rating-star.filled {
+        color:var(--mdc-theme-primary); 
+      }
+      
+      
+      

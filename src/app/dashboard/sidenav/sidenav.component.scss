@@ -1,0 +1,103 @@
+@use '@angular/material' as mat;
+
+@import '../../../custom-theme.scss';
+
+$sidenav-width: 240px;
+
+
+:host {
+
+  
+
+  overflow-x: hidden;
+  height: 90%;
+  width: $sidenav-width;
+  position: relative;
+  
+
+  //menu expansion panel
+  .mat-expansion-panel.menu-accordion{
+    overflow: visible;
+    padding-top: 5px;
+  }
+  .mat-expansion-panel-header.menu-expansion-header{
+    font-size: medium;
+  }
+  .mat-expansion-panel-header.menu-expansion-header:hover{
+    @include backlit(var(--mdc-theme-highlight));
+  }
+ 
+  
+  mat-card{
+    opacity: 1;
+  }
+  .user-card img{
+    width: 52px;
+    height: 52px;
+    border-radius: 4px;
+  }
+  .user-card p{
+    line-height:0.1em;
+    padding: 5px 0 0 0;
+  }
+  .user-card p:nth-child(3){
+    font-weight: bold;
+  }
+  .user-card p:nth-child(2){
+    color: var(--mdc-theme-text-secondary-on-dark);
+  }
+  .mat-mdc-card-content {
+    padding: 20px 0 20px 5px;
+  }
+  .bullet-dot {
+    width: 5px;
+    height: 5px;
+    background-color: var(--mdc-theme-text-primary-on-dark);
+    border-radius: 50%;
+    display: inline-block;
+    @include backlit(var(--mdc-theme-highlight));
+  }
+  .mat-expansion-panel-header.menu-expansion-header .mat-icon{
+    margin-right: 5px;
+  }
+  .mat-expansion-panel-header.menu-expansion-header{
+    font-size: medium;
+    padding-left: 5px;
+  }
+  ::ng-deep {
+    mat-expansion-panel {
+        .mat-expansion-panel-body {
+          padding: 0 5px 5px !important;
+        }
+    }
+  }
+  .sidenav-footer{
+    padding: 15px; 
+    position: fixed;
+    bottom: 0;
+    background-color:  var(--mdc-theme-background);
+    width: 100%;
+    max-width: $sidenav-width;
+    text-align: center;
+  }
+ 
+  mat-divider{
+    margin: 0 10px 0 10px;
+  }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+
+    <mat-card class="login-card" [ngClass]="mode">
+      <mat-card-title><h1>Login</h1></mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div fxLayout="column" fxLayoutGap="8px">
+            <div  fxFlex="50" fxLayout="row">
+              <mat-label *ngIf="isRetro">Email</mat-label>
+            <mat-form-field  class="full-width">
+              <mat-label *ngIf="!isRetro">Email</mat-label>
+              <input matInput formControlName="email" type="email" required />
+              <mat-error *ngIf="loginForm.get('email')?.invalid">Please enter a valid email</mat-error>
+            </mat-form-field>
+          </div>
+          <div  fxFlex="50" fxLayout="row">
+            <mat-label *ngIf="isRetro">Password</mat-label>
+            <mat-form-field class="full-width" fxFlex >
+              <mat-label *ngIf="!isRetro">Password</mat-label>
+              <input matInput formControlName="password" type="password" required />
+              <mat-error *ngIf="loginForm.get('password')?.invalid">Password is required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        </form>
+      </mat-card-content>
+      <mat-card-actions fxLayout="row" fxLayoutGap="8px">
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+        <button mat-button  color="primary" (click)="onRegister()">Register</button>
+        
+
+      </mat-card-actions>
+    </mat-card>
+    

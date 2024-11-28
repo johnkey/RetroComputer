@@ -1,0 +1,110 @@
+@use '@angular/material' as mat;
+@import '../../../../../custom-theme.scss';
+
+
+
+
+:host{
+
+  .full-width {
+    width: 100%;
+  }
+  
+ 
+  .mat-radio-button {
+    display: block;
+    margin: 5px 0;
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .col {
+    flex: 1;
+    margin-right: 20px;
+    margin: 5px 5px 5px 0;
+  }
+  mat-form-field{
+    margin-right: 20px;
+    margin: 5px 5px 5px 0;
+  }
+  
+  .col:last-child {
+    margin-right: 0;
+  }
+  form{
+    padding: 15px;
+  }
+  h1{
+    text-align: center;
+  }
+
+}
+:host form:not(.themed){
+  .mat-mdc-form-field{
+    line-height: 1.5em;
+    font-size: large;
+  }
+  button{
+    color: var(--mdc-theme-primary);
+  }
+  .mat-mdc-outlined-button:not(:disabled) {
+    margin-top: 10px;
+  }
+  .mat-mdc-form-field-input-control:focus{
+    text-shadow: 0 0 10px var(--mdc-theme-highlight), 0 0 20px var(--mdc-theme-highlight) !important; 
+  }
+}
+
+:host form.retro-form{
+   
+   .col {
+    display: flex;
+    flex-direction: row;
+    margin-right: 20px;
+  }
+  .center{
+    display: flex;
+    justify-content: center;
+  }
+  mat-label{
+    display: flex;
+    font-size: large;
+    margin-top: 8px;
+  }
+  mat-label::after{
+    content: ":\\>";
+  }
+  
+  .mat-mdc-raised-button:not(:disabled), h1{
+    border-color: var(--mdc-theme-primary);
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 0;
+    margin-top: 10px;
+    background-color: transparent;
+  }
+
+  .mat-mdc-form-field-input-control:focus{
+    text-shadow: 0 0 10px var(--mdc-theme-highlight), 0 0 20px var(--mdc-theme-highlight) !important; 
+  }
+  
+}
+
+  
+  
+
+ 
+
+
+
+
+
+
+
+ 
+    
+
+

@@ -1,0 +1,28 @@
+  <mat-card class="dashboard-card" [ngClass]="mode">
+    <mat-card-header fxLayout="column" fxFlexAlign="center center">
+        <mat-icon class="full-width align-center large-icon">{{items.icon}}</mat-icon>
+        <h1 class="full-width align-center">{{items.title}}</h1>
+      
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content" fxLayout="column" fxFlexAlign="center center" fxLayoutGap="32px" >
+      <p class="full-width align-center description" fxFlex>{{items.description}}</p>
+      <div  class="full-width align-center" fxFlex>
+        <span class="price offer" >{{items.price}}</span>
+        <span class="price" >{{items.offer}}</span>
+      </div>
+      <span class="legend" >{{items.legend}}</span>
+      <button mat-raised-button color="primary" (click)="onSubmit()">{{items.free ? 'Try for free!!!' :  'Buy Now'}}</button>
+      <div>
+      <mat-divider></mat-divider>
+        <mat-list>
+        <mat-list-item *ngFor="let item of items.items">
+            <div class="item">
+                <mat-icon [ngClass]="{ 'hidden-icon': !item.included }">check</mat-icon>
+                <span>{{item.title}}</span>
+            </div>
+        </mat-list-item>
+        </mat-list>
+    </div>
+    </mat-card-content>
+    
+</mat-card>

@@ -1,0 +1,432 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+
+@use "sass:map";
+@import "@angular/material/theming";
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+
+
+//Currently the template includes 2 monochrome styles for green and amber screens that simulate old CRT monitors. 
+//To change one of the 2 styles for your custom colors change these palettes
+
+//Pallete for green monochrome screen
+$monochrome-green-palette: (
+  50: #e3ffe8,
+  100: #b8ffbe,
+  200: #8cff93,
+  300: #5cff68,
+  400: #30ff3f,
+  500: #00FE1A, // primary (500)
+  600: #00e118,
+  700: #00c415,
+  800: #00a713,
+  900: #007b0e,
+  A100: #b8ffbe,
+  A200: #8cff93,
+  A400: #30ff3f,
+  A700: #00c415,
+  contrast: (
+    50: #222121,
+    100: #222121,
+    200: #222121,
+    300: #222121,
+    400: #222121,
+    500: #003D02,
+    600: #003D02,
+    700: #003D02,
+    800: #003D02,
+    900: #003D02,
+    A100: #222121,
+    A200: #222121,
+    A400: #222121,
+    A700: #003D02
+  )
+);
+
+//Pallete for green monochrome screen
+/* $monochrome-amber-palette: (
+  50: #fff4cc,
+  100: #ffe899,
+  200: #ffdb66,
+  300: #ffcf33,
+  400: #ffc400,
+  500: #ffbb00, // Color principal
+  600: #e6a900,
+  700: #cc9800,
+  800: #b38700,
+  900: #806500,
+  A100: #ffe899,
+  A200: #ffdb66,
+  A400: #ffc400,
+  A700: #cc9800,
+  contrast: (
+    50: #222121,
+    100: #222121,
+    200: #222121,
+    300: #222121,
+    400: #222121,
+    500: #5c3f00,
+    600: #5c3f00,
+    700: #5c3f00,
+    800: #5c3f00,
+    900: #5c3f00,
+    A100: #222121,
+    A200: #222121,
+    A400: #222121,
+    A700: #5c3f00
+  )
+); */
+
+$monochrome-amber-palette: (
+  50: #fff4b2, // Más claro
+  100: #ffe866,
+  200: #ffe233,
+  300: #ffd102,
+  400: #e0ba02,
+  500: #ffd102, // Color principal
+  600: #b79502,
+  700: #8f7702,
+  800: #745d01,
+  900: #5e4901, // Más oscuro
+  A100: #ffe866,
+  A200: #ffd102,
+  A400: #e0ba02,
+  A700: #b79502,
+  contrast: (
+    50: #222121, // Contraste para colores claros
+    100: #222121,
+    200: #222121,
+    300: #222121,
+    400: #222121,
+    500: #5c3f00, // Contraste para el color principal
+    600: #5c3f00,
+    700: #5c3f00,
+    800: #5c3f00,
+    900: #5c3f00,
+    A100: #222121,
+    A200: #222121,
+    A400: #222121,
+    A700: #5c3f00
+  )
+);
+
+
+
+//Modify these colors in relation to your color palette as these colors will be used to give the monochromatic effect
+//custom monochrome colors for green theme
+$foregroundColor: #00FE1A;
+$screenColor: #003D02;
+$screenBorder: #222121;
+$radiance: #44ff99; //radiance effect
+//custom monochrome colors for amber theme
+/* $foregroundColor-amber: #ffbb00;
+$screenColor-amber: #5c3f00;
+$screenBorder-amber: #222121;
+$radiance-amber: #ffd102; //radiance effect */
+
+$foregroundColor-amber: #ffd102;
+$screenColor-amber: #5c3f00;
+$screenBorder-amber: #222121;
+$radiance-amber: #ffbb00; //radiance effect
+
+// Define the palettes for your theme using theme monochrome palletes
+$RetroComputer-primary: mat.define-palette($monochrome-green-palette);
+$RetroComputer-amber-primary: mat.define-palette($monochrome-amber-palette);
+
+// The accent palette is optional (defaults to grey).
+$RetroComputer-accent: mat.define-palette(mat.$grey-palette, 800, 700, 900);
+// The warn palette is optional (defaults to red).
+$RetroComputer-warn: mat.define-palette(mat.$orange-palette);
+//define a typography with retro computer look and feel
+$RetroComputer-typography: mat.define-typography-config(
+    $font-family: 'VT323'
+); 
+
+
+// Create the theme objects.
+// Here you can also configure the density of the typography. 
+$RetroComputer-theme: mat.define-dark-theme((
+  color: (
+    primary: $RetroComputer-primary,
+    accent: $RetroComputer-accent,
+    warn: $RetroComputer-warn
+  ),
+  typography: $RetroComputer-typography,
+  density: 0
+));
+
+$RetroComputer-amber-theme: mat.define-dark-theme((
+  color: (
+    primary: $RetroComputer-amber-primary,
+    accent: $RetroComputer-accent,
+    warn: $RetroComputer-warn
+  ),
+  typography: $RetroComputer-typography,
+  density: 0
+));
+
+//add the typography
+@include mat.typography-hierarchy($RetroComputer-typography);
+
+//function that adds de foreground monochrome
+@function RetroComputer-foreground($color) {
+  @return (
+      base:              $color,
+      divider:           0.2,
+      dividers:          0.2,
+      disabled:          rgba($color, 0.38),
+      disabled-button:   rgba($color, 0.38),
+      disabled-text:     rgba($color, 0.38),
+      hint-text:         rgba($color, 0.38),
+      secondary-text:    rgba($color, 0.54),
+      icon:              rgba($color, 0.54),
+      icons:             rgba($color, 0.54),
+      text:              $color,
+      slider-off:        rgba($color, 0.26),
+      slider-off-active: rgba($color, 0.38),
+      slider-min:        rgba($color, 0.38)
+  );
+};
+
+//apply green foreground
+$green-foreground: RetroComputer-foreground($foregroundColor);
+$RetroComputer-theme: map.set($RetroComputer-theme, color, foreground, $green-foreground);
+
+//apply amber foreground
+$amber-foreground: RetroComputer-foreground($foregroundColor-amber);
+$RetroComputer-amber-theme: map.set($RetroComputer-amber-theme, color, foreground, $amber-foreground);
+
+//custom toolbar bakground
+@function toolbar-background-color($bg-color) {
+  @return ( app-bar: $bg-color);
+};
+$background-color: toolbar-background-color(mat.get-color-from-palette($RetroComputer-accent, 800));
+$RetroComputer-theme: map.merge($RetroComputer-theme, color, background, $background-color);
+$RetroComputer-amber-theme: map.merge($RetroComputer-amber-theme, color, background, $background-color);
+
+
+//Get some colors from palettes to apply monochrome effect
+$app-color-fonfig: mat.get-color-config($RetroComputer-theme);
+$foreground-text: map.get($app-color-fonfig, foreground, text);
+$foreground-secondary-text: map.get($app-color-fonfig, foreground, disabled);
+$secondary-backfround: mat.get-color-from-palette($RetroComputer-accent, 900);
+
+$app-color-fonfig-amber: mat.get-color-config($RetroComputer-amber-theme);
+$foreground-text-amber: map.get($app-color-fonfig-amber, foreground, text);
+$foreground-secondary-text-amber: map.get($app-color-fonfig-amber, foreground, disabled);
+$secondary-backfround-amber: mat.get-color-from-palette($RetroComputer-accent, 900);
+
+
+
+
+//mixins
+@mixin oldscreensize{
+  min-height: calc(90vh - var(--mat-toolbar-standard-height));
+  height: auto;
+  overflow: none;
+  box-sizing:border-box;
+  
+}
+
+@mixin backlit($rad){
+  z-index: 99;
+	box-shadow: 0 0 16px $rad !important;
+}
+@mixin small-icons{
+  font-size: 16px;
+  width: 16px; 
+  height: 16px 
+}
+
+
+@mixin oldscreen($screen,$border){
+  background: radial-gradient(ellipse at center, #000 50%,$screen 100%);
+  background-size: 100% 4px;
+  background-repeat: repeat-y;
+  opacity : 0.9;
+  padding: 8px;
+	border: 3px solid $border;
+	border-radius: 20px;
+	box-shadow: inset 0px 0px 10px 10px #000;
+  margin: 5px 5px 0px 5px;
+  //padding: 5px 5px 5px 5px;
+  @include oldscreensize;
+  
+}
+@mixin scrollbar-track ($border){
+  box-shadow: inset 0 0 5px $border;
+}
+@mixin scrollbar-thumb($foreground){
+  background: map.get($foreground,text);
+}
+@mixin scrollbar-thumb-hover($foreground){
+  background: map.get($foreground,base);
+}
+@mixin primary-color($color){
+  --mdc-theme-primary: #{$color};
+}
+//apply the theme based on added components. If you need to add a component it will have to be included here
+@mixin apply-theme($theme){
+
+  @include mat.core-theme($theme);
+  @include mat.card-theme($theme);
+  @include mat.toolbar-theme($theme);
+  @include mat.icon-theme($theme);
+  @include mat.icon-button-theme($theme);
+  @include mat.fab-theme($theme);
+  @include mat.sidenav-theme($theme);
+  @include mat.divider-theme($theme);
+  @include mat.menu-theme($theme);
+  @include mat.button-theme($theme);
+  @include mat.progress-bar-theme($theme);
+  @include mat.progress-spinner-theme($theme);
+  @include mat.expansion-theme($theme);
+  @include mat.list-theme($theme);
+  @include mat.table-theme($theme);
+  @include mat.paginator-theme($theme);
+  @include mat.slide-toggle-theme($theme);
+
+//applies the theme to specific components contained in an element with class .themed
+  .themed{
+    
+    @include mat.option-theme($theme);
+    @include mat.select-theme($theme);
+    @include mat.input-theme($theme);
+    @include mat.optgroup-theme($theme);
+    @include mat.form-field-theme($theme);
+    
+    
+  }  
+
+}
+
+//Specific styles for the green monochrome theme
+.green-theme{
+
+  color: $foregroundColor;
+
+  .cdk-focused{
+    @include backlit($radiance);
+  }
+
+  .oldscreeneffect {
+    @include oldscreen($screenColor,$screenBorder);
+  }
+
+
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    @include scrollbar-track($screenBorder);
+    border-radius: 0px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @include scrollbar-thumb($green-foreground);
+    border-radius: 0px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @include scrollbar-thumb-hover($green-foreground);
+    cursor: pointer;
+  }
+
+  // Include theme styles for core and each component used in your app.
+  // Alternatively, you can import and @include the theme mixins for each component
+  // that you are using.
+
+  //@include mat.all-component-themes($RetroComputer-theme);
+
+
+  @include apply-theme($RetroComputer-theme);
+  
+  form.themed,
+  .mat-mdc-select-panel.themed{
+    @include mat.option-theme($RetroComputer-theme);
+    @include mat.select-theme($RetroComputer-theme);
+  }
+
+
+  //Generic CSS variables that will be used in the components to apply monochrome effect
+  --mdc-theme-primary: #{$foregroundColor};
+  --mdc-theme-text-primary-on-dark: #{$foreground-text};
+  --mdc-theme-text-secondary-on-dark: #{$foreground-secondary-text};
+  --mdc-theme-background:  #{$secondary-backfround};
+  --mdc-theme-highlight: #{$radiance}; //radiance effect
+  --mdc-theme-surface: #{$screenColor};
+
+}
+//Specific styles for the amber monochrome theme
+.amber-theme{
+
+  color: $foregroundColor-amber;
+
+  .cdk-focused{
+    @include backlit($radiance-amber);
+  }
+
+  .oldscreeneffect {
+    @include oldscreen($screenColor-amber,$screenBorder-amber);
+  }
+
+
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    @include scrollbar-track($screenBorder-amber);
+    border-radius: 0px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @include scrollbar-thumb($amber-foreground);
+    border-radius: 0px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @include scrollbar-thumb-hover($amber-foreground);
+    cursor: pointer;
+  }
+
+  // Include theme styles for core and each component used in your app.
+  // Alternatively, you can import and @include the theme mixins for each component
+  // that you are using.
+
+  //@include mat.all-component-themes($RetroComputer-theme);
+
+
+  
+  @include apply-theme($RetroComputer-amber-theme);
+
+  form.themed,
+  .mat-mdc-select-panel.themed{
+    @include mat.option-theme($RetroComputer-amber-theme);
+    @include mat.select-theme($RetroComputer-amber-theme);
+  }
+
+
+  //Generic CSS variables that will be used in the components to apply monochrome effect
+  --mdc-theme-primary: #{$foregroundColor-amber};
+  --mdc-theme-text-primary-on-dark: #{$foreground-text-amber};
+  --mdc-theme-text-secondary-on-dark: #{$foreground-secondary-text-amber};
+  --mdc-theme-background:  #{$secondary-backfround-amber};
+  --mdc-theme-highlight: #{$radiance-amber};
+  --mdc-theme-surface: #{$screenColor-amber};
+  
+
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; background: #222121;text-shadow: 0px 0px 16px var(--mdc-theme-highlight);
+  opacity: 0.8;font-family: VT323, monospace;}

@@ -1,0 +1,29 @@
+<h1 class="mat-h1">Sales Dashboard</h1>
+        <mat-grid-list *ngIf="cols$ | async as cols" [cols]="cols[0].cols" rowHeight="350px" >
+          <mat-grid-tile>
+            <app-progress-card [values]="monthSales" mode="box"></app-progress-card>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="{{cols[0].cols/2}}">
+            <app-ngx-advanced-pie-chart title="Sales by Country" [options]="advancedPieOptios" mode="box"></app-ngx-advanced-pie-chart>
+          </mat-grid-tile>
+            
+          <mat-grid-tile>
+            <app-apex-chart [options]="radarChartOptions" mode="box"></app-apex-chart>
+          </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list *ngIf="cols$ | async as cols" [cols]="cols[1].cols"  rowHeight="350px">
+    <mat-grid-tile>
+        <app-apex-chart [options]="areaChartOptions" mode="box"></app-apex-chart>
+    </mat-grid-tile>
+    
+</mat-grid-list>
+<mat-grid-list *ngIf="cols$ | async as cols" [cols]="cols[2].cols"  rowHeight="350px">
+    <mat-grid-tile >
+        <app-ngx-horizontal-bar-chart [options]="horizontalBarOptionsPlatforms" mode="box" title="Most selling Platforms"></app-ngx-horizontal-bar-chart>
+    </mat-grid-tile>
+    <mat-grid-tile >
+        <app-ngx-horizontal-bar-chart [options]="horizontalBarOptionsPublishers" mode="box" title="Most selling Publishers"></app-ngx-horizontal-bar-chart>
+    </mat-grid-tile>
+    
+</mat-grid-list>
+

@@ -1,0 +1,7 @@
+<div #gameCarousel class="game-carousel">
+    <button class="carousel-button left" (click)="moveLeft()" [disabled]="!canMoveLeft">&#10094;</button>
+    <div #carouselTrack class="carousel-track"  [style.transform]="'translateX(-' + (currentIndex * forward) + 'px)'">
+        <app-game-card *ngFor="let game of games" [game]="game" mode="box" [style.flex]="'0 0 ' + itemWidth + 'px'"></app-game-card>
+    </div>
+    <button class="carousel-button right" (click)="moveRight()" [disabled]="!canMoveRight">&#10095;</button>
+</div>

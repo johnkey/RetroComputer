@@ -1,0 +1,15 @@
+
+@import './custom-theme.scss';
+mat-drawer-container  {
+    @include oldscreensize;
+  }
+  
+  //cards
+  mat-card{
+    opacity: 0.8;
+  }
+  
+  
+  ::-webkit-scrollbar {
+    width: 5px;
+  }

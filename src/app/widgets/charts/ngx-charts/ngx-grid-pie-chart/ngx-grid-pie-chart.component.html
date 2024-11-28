@@ -1,0 +1,16 @@
+<mat-card class="dashboard-card" [ngClass]="mode">
+    <mat-card-header>
+      <mat-card-title>
+        {{title}}
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+        <div #chart *ngIf="chartOptions != undefined">
+            <ngx-charts-pie-grid
+                [view]="chartOptions.view"
+                [scheme]="chartOptions.colorScheme"
+                [results]="chartOptions.results">
+            </ngx-charts-pie-grid>
+        </div>
+    </mat-card-content>
+</mat-card>

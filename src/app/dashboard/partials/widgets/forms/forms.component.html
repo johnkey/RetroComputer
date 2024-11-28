@@ -1,0 +1,390 @@
+<section fxLayout="row" fxLayout.lt-lg="column">
+  <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()"  fxFlex=50>
+    <h1>Retro Style Form</h1>
+ 
+        <mat-form-field class="full-width" appearance="outline">
+          <input matInput placeholder="Company" formControlName="company">
+        </mat-form-field>
+ 
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5px">
+      <div fxFlex>
+        <mat-form-field class="full-width" appearance="outline">
+          <input matInput placeholder="First name" formControlName="firstName">
+          <mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
+            First name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex>
+        <mat-form-field class="full-width" appearance="outline">
+          <input matInput placeholder="Last name" formControlName="lastName">
+          <mat-error *ngIf="addressForm.controls['lastName'].hasError('required')">
+            Last name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    
+        <mat-form-field class="full-width" appearance="outline">
+          <textarea matInput placeholder="Address" formControlName="address"></textarea>
+          <mat-error *ngIf="addressForm.controls['address'].hasError('required')">
+            Address is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+     
+    <div *ngIf="!hasUnitNumber">
+     
+        <button mat-stroked-button type="button" (click)="hasUnitNumber = !hasUnitNumber">
+          + Add C/O, Apt, Suite, Unit
+        </button>
+      
+    </div>
+    <div *ngIf="hasUnitNumber">
+      
+        <mat-form-field class="full-width" appearance="outline">
+          <textarea matInput placeholder="Address 2" formControlName="address2"></textarea>
+        </mat-form-field>
+     
+    </div>
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5px">
+      <div fxFlex>
+        <mat-form-field class="full-width" appearance="outline">
+          <input matInput placeholder="City" formControlName="city">
+          <mat-error *ngIf="addressForm.controls['city'].hasError('required')">
+            City is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-select placeholder="State" formControlName="state">
+            <mat-option *ngFor="let state of states" [value]="state.abbreviation">
+              {{ state.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="addressForm.controls['state'].hasError('required')">
+            State is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    
+        <mat-form-field class="full-width" appearance="outline">
+          <input matInput #postalCode maxlength="5" placeholder="Postal Code" type="number" formControlName="postalCode">
+          <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+        </mat-form-field>
+     
+    <div >
+    
+        <mat-radio-group formControlName="shipping">
+          <mat-radio-button value="free">Free Shipping</mat-radio-button>
+          <mat-radio-button value="priority">Priority Shipping</mat-radio-button>
+          <mat-radio-button value="nextday">Next Day Shipping</mat-radio-button>
+        </mat-radio-group>
+     
+    </div>
+  
+    <button mat-stroked-button color="primary"  type="submit">Submit</button>
+</form>
+<form [formGroup]="addressForm2" novalidate (ngSubmit)="onSubmit()"  fxFlex=50 class="retro-form">
+<h1>Mega Retro Style</h1>
+
+  
+<div fxLayout="row">
+  
+    <mat-label>Company</mat-label>
+    <mat-form-field class="full-width" >
+      <input matInput formControlName="company">
+    </mat-form-field>
+  
+</div>
+<div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5px">
+  <div fxFlex fxLayout="row">
+    <mat-label>First&nbsp;name</mat-label>
+    <mat-form-field class="full-width" >
+      <input matInput formControlName="firstName">
+      <mat-error *ngIf="addressForm2.controls['firstName'].hasError('required')">
+        First name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div fxFlex fxLayout="row">
+    <mat-label>Last&nbsp;name</mat-label>
+    <mat-form-field class="full-width" >
+      <input matInput formControlName="lastName">
+      <mat-error *ngIf="addressForm2.controls['lastName'].hasError('required')">
+        Last name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+</div>
+<div fxLayout="row">
+  
+    <mat-label>Address</mat-label>
+    <mat-form-field class="full-width" >
+      <textarea matInput formControlName="address"></textarea>
+      <mat-error *ngIf="addressForm2.controls['address'].hasError('required')">
+        Address is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+</div>
+
+
+<div *ngIf="!hasUnitNumber2">
+     
+  <button mat-button type="button" (click)="hasUnitNumber2 = !hasUnitNumber2">
+    + Add C/O, Apt, Suite, Unit
+  </button>
+
+</div>
+   
+  
+
+<div fxLayout="row" *ngIf="hasUnitNumber2">
+
+    <mat-label>Address&nbsp;2</mat-label>
+    <mat-form-field class="full-width" >
+      <textarea matInput formControlName="address2"></textarea>
+    </mat-form-field>
+
+</div>
+<div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5px">
+  <div fxFlex fxLayout="row">
+    <mat-label>City</mat-label>
+    <mat-form-field class="full-width" >
+      <input matInput formControlName="city">
+      <mat-error *ngIf="addressForm2.controls['city'].hasError('required')">
+        City is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div fxFlex fxLayout="row">
+    <mat-label>State</mat-label>
+    <mat-form-field class="full-width" >
+      <mat-select formControlName="state">
+        <mat-option *ngFor="let state of states" [value]="state.abbreviation">
+          {{ state.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="addressForm2.controls['state'].hasError('required')">
+        State is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+</div>
+
+  <div fxLayout="row">
+    <mat-label>Postal&nbsp;code</mat-label>
+    <mat-form-field class="full-width" >
+      <input matInput #postalCode maxlength="5" type="number" formControlName="postalCode">
+      <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+    </mat-form-field>
+  </div>
+
+
+  <div>
+    <mat-radio-group formControlName="shipping">
+      <mat-radio-button value="free">Free Shipping</mat-radio-button>
+      <mat-radio-button value="priority">Priority Shipping</mat-radio-button>
+      <mat-radio-button value="nextday">Next Day Shipping</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+
+<button mat-raised-button color="primary" type="submit">Submit</button>
+</form>
+</section>
+
+<section fxLayout="row" fxLayout.lt-lg="column">
+    <form [formGroup]="addressForm3" novalidate (ngSubmit)="onSubmit()" fxFlex=50 class="themed">
+      <mat-card >
+        <mat-card-header>
+          <mat-card-title>Themed Filled Form</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Company" formControlName="company">
+              </mat-form-field>
+           
+          <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5px">
+            <div fxFlex >
+              <mat-form-field class="full-width">
+                <input matInput placeholder="First name" formControlName="firstName">
+                <mat-error *ngIf="addressForm3.controls['firstName'].hasError('required')">
+                  First name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex>
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Last name" formControlName="lastName">
+                <mat-error *ngIf="addressForm3.controls['lastName'].hasError('required')">
+                  Last name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+         
+              <mat-form-field class="full-width">
+                <textarea matInput placeholder="Address" formControlName="address"></textarea>
+                <mat-error *ngIf="addressForm3.controls['address'].hasError('required')">
+                  Address is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+          
+          <div  *ngIf="!hasUnitNumber3">
+            
+              <button mat-button type="button" (click)="hasUnitNumber3 = !hasUnitNumber3">
+                + Add C/O, Apt, Suite, Unit
+              </button>
+           
+          </div>
+          <div *ngIf="hasUnitNumber3">
+            
+              <mat-form-field class="full-width">
+                <textarea matInput placeholder="Address 2" formControlName="address2"></textarea>
+              </mat-form-field>
+          
+          </div>
+          <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5px">
+            <div fxFlex>
+              <mat-form-field class="full-width">
+                <input matInput placeholder="City" formControlName="city">
+                <mat-error *ngIf="addressForm3.controls['city'].hasError('required')">
+                  City is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex>
+              <mat-form-field class="full-width" color="accent"> 
+                <mat-select placeholder="State" formControlName="state" panelClass="themed">
+                  <mat-option *ngFor="let state of states" [value]="state.abbreviation">
+                    {{ state.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="addressForm3.controls['state'].hasError('required')">
+                  State is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          
+              <mat-form-field class="full-width">
+                <input matInput #postalCode maxlength="5" placeholder="Postal Code" type="number" formControlName="postalCode">
+                <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+              </mat-form-field>
+         
+          <div >
+            
+              <mat-radio-group formControlName="shipping">
+                <mat-radio-button value="free">Free Shipping</mat-radio-button>
+                <mat-radio-button value="priority">Priority Shipping</mat-radio-button>
+                <mat-radio-button value="nextday">Next Day Shipping</mat-radio-button>
+              </mat-radio-group>
+      
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+    <form [formGroup]="addressForm4" novalidate (ngSubmit)="onSubmit()" fxFlex=50 class="themed">
+      <mat-card >
+        <mat-card-header>
+          <mat-card-title>Themed Outline Form</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          
+              <mat-form-field class="full-width" appearance="outline">
+                <input matInput placeholder="Company" formControlName="company">
+              </mat-form-field>
+            
+          <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5px">
+            <div fxFlex>
+              <mat-form-field class="full-width"  appearance="outline">
+                <input matInput placeholder="First name" formControlName="firstName">
+                <mat-error *ngIf="addressForm4.controls['firstName'].hasError('required')">
+                  First name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex>
+              <mat-form-field class="full-width"  appearance="outline">
+                <input matInput placeholder="Last name" formControlName="lastName">
+                <mat-error *ngIf="addressForm4.controls['lastName'].hasError('required')">
+                  Last name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          
+              <mat-form-field class="full-width"  appearance="outline">
+                <textarea matInput placeholder="Address" formControlName="address"></textarea>
+                <mat-error *ngIf="addressForm4.controls['address'].hasError('required')">
+                  Address is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+          
+          <div *ngIf="!hasUnitNumber4">
+           
+              <button mat-button type="button" (click)="hasUnitNumber4 = !hasUnitNumber4">
+                + Add C/O, Apt, Suite, Unit
+              </button>
+            
+          </div>
+          <div  *ngIf="hasUnitNumber4"  >
+            
+              <mat-form-field class="full-width" appearance="outline">
+                <textarea matInput placeholder="Address 2" formControlName="address2"></textarea>
+              </mat-form-field>
+            
+          </div>
+          <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5px">
+            <div fxFlex>
+              <mat-form-field class="full-width"  appearance="outline">
+                <input matInput placeholder="City" formControlName="city">
+                <mat-error *ngIf="addressForm4.controls['city'].hasError('required')">
+                  City is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex>
+              <mat-form-field class="full-width"  appearance="outline">
+                <mat-select placeholder="State" formControlName="state" panelClass="themed">
+                  <mat-option *ngFor="let state of states" [value]="state.abbreviation">
+                    {{ state.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="addressForm4.controls['state'].hasError('required')">
+                  State is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          
+              <mat-form-field class="full-width"  appearance="outline">
+                <input matInput #postalCode maxlength="5" placeholder="Postal Code" type="number" formControlName="postalCode">
+                <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+              </mat-form-field>
+           
+          <div >
+              <mat-radio-group formControlName="shipping">
+                <mat-radio-button value="free">Free Shipping</mat-radio-button>
+                <mat-radio-button value="priority">Priority Shipping</mat-radio-button>
+                <mat-radio-button value="nextday">Next Day Shipping</mat-radio-button>
+              </mat-radio-group>
+            
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+    
+  </section>
+
+
