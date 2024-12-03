@@ -1,11 +1,11 @@
 <h1 class="mat-h1">Card</h1>
         <mat-grid-list *ngIf="cols$ | async as cols" [cols]="cols[0].cols" rowHeight="350px">
-          <mat-grid-tile>
-            <app-apex-chart [options]="areaChartOptions"></app-apex-chart>
+          <mat-grid-tile [colspan]="getColspan(cols[0].cols)">
+            <app-apex-chart [options]="areaChartOptions" ></app-apex-chart>
           </mat-grid-tile>
-          <mat-grid-tile>
+         <!--  <mat-grid-tile>
             <app-spinner-card [values]="progressCard2"></app-spinner-card>
-          </mat-grid-tile>
+          </mat-grid-tile> -->
           <mat-grid-tile>
             <app-apex-chart [options]="angleCircleOptions"></app-apex-chart>
           </mat-grid-tile>

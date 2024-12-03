@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, HostListener, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { GameCard, GameCardComponent } from '../../cards/game-card/game-card.component';
 
 
@@ -7,12 +7,12 @@ import { GameCard, GameCardComponent } from '../../cards/game-card/game-card.com
   templateUrl: './games-carousel.component.html',
   styleUrl: './games-carousel.component.scss'
 })
-export class GamesCarouselComponent implements AfterViewInit,OnChanges{
+export class GamesCarouselComponent implements AfterViewInit,OnChanges,OnDestroy{
   
-  
+  constructor(public elementRef: ElementRef){}
   
   @ViewChild('gameCarousel', { static: true }) gameCarousel!: ElementRef;
-  @ViewChild(GameCardComponent, { static: true }) gameCard!: ElementRef;
+  
   
 
   @Input()
@@ -30,10 +30,18 @@ export class GamesCarouselComponent implements AfterViewInit,OnChanges{
   currentIndex = 0;
   forward= 0;
 
+  private resizeObserver!:ResizeObserver;
+
+  ngOnDestroy(): void {
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+    }
+  }
+
   ngAfterViewInit(): void {
     this.updateCarousel();
-    const resizeObserver = new ResizeObserver(() => this.updateCarousel());
-    resizeObserver.observe(this.gameCarousel.nativeElement);
+    this.resizeObserver = new ResizeObserver(() => this.updateCarousel());
+    this.resizeObserver.observe(this.gameCarousel.nativeElement);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -44,7 +52,7 @@ export class GamesCarouselComponent implements AfterViewInit,OnChanges{
 
   updateCarousel() {
 
-    const carouselWidth = this.gameCarousel.nativeElement.clientWidth; // Ancho visible
+    const carouselWidth = this.elementRef.nativeElement.clientWidth; // Ancho visible
     const computedStyle = getComputedStyle(this.gameCarousel.nativeElement);
   
     

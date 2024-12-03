@@ -6,9 +6,52 @@ import { ThemeService } from 'src/app/theme.service';
 import { trendigGames } from './data';
 import { GameCard } from 'src/app/widgets/cards/game-card/game-card.component';
 
-const HANDSET_PORTRAIT = "(max-width: 599.98px) and (orientation: portrait)";
+/* const HANDSET_PORTRAIT = "(max-width: 599.98px) and (orientation: portrait)";
 const HANDSET_LANDSCAPE = "(max-width: 959.98px) and (orientation: landscape)";
-const TABLET_PORTRAIT = "(min-width: 600px) and (max-width: 839.98px) and (orientation: portrait)";
+const TABLET_PORTRAIT = "(min-width: 600px) and (max-width: 839.98px) and (orientation: portrait)"; */
+
+/* Handset
+: 
+"(max-width: 599.98px) and (orientation: portrait), (max-width: 959.98px) and (orientation: landscape)"
+HandsetLandscape
+: 
+"(max-width: 959.98px) and (orientation: landscape)"
+HandsetPortrait
+: 
+"(max-width: 599.98px) and (orientation: portrait)"
+Large
+: 
+"(min-width: 1280px) and (max-width: 1919.98px)"
+Medium
+: 
+"(min-width: 960px) and (max-width: 1279.98px)"
+Small
+: 
+"(min-width: 600px) and (max-width: 959.98px)"
+Tablet
+: 
+"(min-width: 600px) and (max-width: 839.98px) and (orientation: portrait), (min-width: 960px) and (max-width: 1279.98px) and (orientation: landscape)"
+TabletLandscape
+: 
+"(min-width: 960px) and (max-width: 1279.98px) and (orientation: landscape)"
+TabletPortrait
+: 
+"(min-width: 600px) and (max-width: 839.98px) and (orientation: portrait)"
+Web
+: 
+"(min-width: 840px) and (orientation: portrait), (min-width: 1280px) and (orientation: landscape)"
+WebLandscape
+: 
+"(min-width: 1280px) and (orientation: landscape)"
+WebPortrait
+: 
+"(min-width: 840px) and (orientation: portrait)"
+XLarge
+: 
+"(min-width: 1920px)"
+XSmall
+: 
+"(max-width: 599.98px)" */
 
 @Component({
   selector: 'app-games-catalog',
@@ -49,16 +92,21 @@ export class GamesCatalogComponent implements OnInit{
   }
 
   cols$ = this.breakpointObserver.observe([
-    Breakpoints.Handset, 
-    Breakpoints.TabletPortrait
+    Breakpoints.HandsetPortrait, 
+    Breakpoints.HandsetLandscape,
+    Breakpoints.TabletPortrait,
+    Breakpoints.TabletLandscape,
+    Breakpoints.Medium,
+    Breakpoints.Large,
+    Breakpoints.XLarge
   ]).pipe(
     map((result) => {
 
-      const isHandsetPortrait = result.breakpoints[HANDSET_PORTRAIT];
+      /* const isHandsetPortrait = result.breakpoints[HANDSET_PORTRAIT];
       const isHandsetLandscape = result.breakpoints[HANDSET_LANDSCAPE];
-      const isTabletPortrait = result.breakpoints[TABLET_PORTRAIT];
+      const isTabletPortrait = result.breakpoints[TABLET_PORTRAIT]; */
       
-      if (isHandsetPortrait ) {
+      if (result.breakpoints[ Breakpoints.HandsetPortrait] || result.breakpoints[ Breakpoints.HandsetLandscape] ) {
         console.log('Handset detected');
         this.isBanner = false;
         this.carouselItems = 1;
@@ -68,13 +116,43 @@ export class GamesCatalogComponent implements OnInit{
           { row: '2', cols: 1, rows: 1 },
           { row: '3', cols: 1, rows: 1 }
         ];
-      } else if (isTabletPortrait || isHandsetLandscape) {
+      } else if (result.breakpoints[ Breakpoints.TabletPortrait]) {
         console.log('TabletPortrait detected');
         this.isBanner = true;
         this.carouselItems = 3;
         this.carouselStep = 1;
         return [
           { row: '1', cols: 1, rows: 1 },
+          { row: '2', cols: 1, rows: 1 },
+          { row: '3', cols: 1, rows: 1 }
+        ];
+      }else if (result.breakpoints[ Breakpoints.TabletLandscape] || result.breakpoints[ Breakpoints.Medium] ) {
+        console.log('medium detected');
+        this.isBanner = true;
+        this.carouselItems = 4;
+        this.carouselStep = 1;
+        return [
+          { row: '1', cols: 3, rows: 1 },
+          { row: '2', cols: 1, rows: 1 },
+          { row: '3', cols: 1, rows: 1 }
+        ];
+      }else if (result.breakpoints[ Breakpoints.Large]) {
+        console.log('medium detected');
+        this.isBanner = true;
+        this.carouselItems = 5;
+        this.carouselStep = 2;
+        return [
+          { row: '1', cols: 3, rows: 1 },
+          { row: '2', cols: 1, rows: 1 },
+          { row: '3', cols: 1, rows: 1 }
+        ];
+      }else if (result.breakpoints[ Breakpoints.XLarge] ) {
+        console.log('medium detected');
+        this.isBanner = true;
+        this.carouselItems = 6;
+        this.carouselStep = 3;
+        return [
+          { row: '1', cols: 3, rows: 1 },
           { row: '2', cols: 1, rows: 1 },
           { row: '3', cols: 1, rows: 1 }
         ];

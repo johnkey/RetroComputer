@@ -1,4 +1,4 @@
-import {  ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {  AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import {  BaseChartComponent, Color,  ScaleType } from '@swimlane/ngx-charts';
 
 
@@ -27,7 +27,9 @@ export interface HeatMapOptions{
   styleUrl: './ngx-heat-map.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgxHeatMapComponent implements OnInit,OnChanges{
+export class NgxHeatMapComponent implements OnInit,OnChanges, AfterViewInit{
+  
+  constructor(public elementRef: ElementRef){}
 
   @Input()
   mode!: string;
@@ -38,17 +40,43 @@ export class NgxHeatMapComponent implements OnInit,OnChanges{
   @Input()
   options!: HeatMapOptions;
 
+  private resizeObserver!: ResizeObserver;
+  private width!:number;
+  private height!:number;
+
   public chartOptions: Partial<HeatMapOptions> | any;
     
    ngOnChanges(changes: SimpleChanges): void {
     this.chartOptions=this.options;
     this.chartOptions.colorScheme=this.generateScale(this.options.colors || []); 
+    this.adjustToParent(this.width, this.height);
   }
 
    ngOnInit(): void {
     this.chartOptions=this.options;
     this.chartOptions.colorScheme=this.generateScale(this.options.colors || []);
 
+  }
+
+  ngAfterViewInit(): void {
+    const parentElement = this.elementRef.nativeElement;
+
+    // Observa cambios en el tamaño del contenedor padre
+    this.resizeObserver = new ResizeObserver(entries => {
+      for (let entry of entries) {
+        const { width, height } = entry.contentRect;
+        this.adjustToParent(width-52, height-52);
+      }
+    });
+
+    this.resizeObserver.observe(parentElement);
+  }
+
+  private adjustToParent(width: number, height: number): void {
+    // Ajusta las dimensiones del componente hijo
+    this.width=width;
+    this.height=height;
+    this.chartOptions.view = [width,height];
   }
 
   // onSelect(data): void {

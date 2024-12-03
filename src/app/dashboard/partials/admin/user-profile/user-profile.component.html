@@ -45,12 +45,12 @@
     </div>
   </mat-grid-tile>
   <mat-grid-tile colspan="{{ cols[0].cols / 2 }}" rowspan="{{ cols[0].rows}}">
-    <app-ngx-number-cards
+    <app-ngx-number-cards #numberCards
       [options]="numberCardOptions"
       mode="box"
     ></app-ngx-number-cards>
   </mat-grid-tile>
-  <mat-grid-tile colspan="{{ cols[0].cols - 2 }}" rowspan="3">
+  <mat-grid-tile colspan="{{ cols[0].cols / 2 }}" rowspan="3">
     <div class="boxed full-height full-width">
       <mat-tab-group>
         

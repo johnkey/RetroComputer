@@ -1,4 +1,4 @@
-import { Component,Input,OnInit,inject } from '@angular/core';
+import { Component,Input,OnChanges,OnInit,SimpleChanges,inject } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { ProgressCard, ProgressCardComponent } from 'src/app/widgets/cards/progress-card/progress-card.component';
@@ -15,7 +15,7 @@ import { series } from './data';
   templateUrl: './apex-charts.component.html',
   styleUrl: './apex-charts.component.scss'
 })
-export class ApexChartsComponent implements OnInit{
+export class ApexChartsComponent implements OnInit,OnChanges{
 
   @Input() themeChanged: string = '';
   baseAngleCircleOptions!: ApexOptions;
@@ -37,11 +37,13 @@ export class ApexChartsComponent implements OnInit{
 
     
   }
-  ngOnInit(): void {
-
-    this.themeService.themeChanged$.subscribe((nuevoTema) => {
-      this.ngOnInit(); // update theme
-      ApexCharts.exec('angleCircle', 'updateOptions', this.angleCircleOptions,true,true);
+  ngOnChanges(changes: SimpleChanges): void {
+    
+      this.updateCharts();
+      
+  }
+  updateCharts() {
+    ApexCharts.exec('angleCircle', 'updateOptions', this.angleCircleOptions,true,true);
       ApexCharts.exec('angleCircleTransparent', 'updateOptions', this.angleCircleOptionsTransparent,true,true);
       ApexCharts.exec('angleCircleBox', 'updateOptions', this.angleCircleOptionsBox,true,true);
       ApexCharts.exec('line', 'updateOptions', this.lineChartOptions,true,true);
@@ -53,6 +55,12 @@ export class ApexChartsComponent implements OnInit{
       ApexCharts.exec('lineTransparent', 'updateOptions', this.lineChartOptionsTransparent,true,true);
       ApexCharts.exec('lineBox', 'updateOptions', this.lineChartOptionsBox,true,true);
       ApexCharts.exec('area', 'updateOptions', this.areaChartOptions,true,true);
+  }
+  ngOnInit(): void {
+
+    this.themeService.themeChanged$.subscribe((nuevoTema) => {
+      this.ngOnInit(); // update theme
+      this.updateCharts();
       let primaryColor:string = getComputedStyle(document.body).getPropertyValue("--mdc-theme-primary");
       this.colorLabels(primaryColor);
 
@@ -447,13 +455,22 @@ export class ApexChartsComponent implements OnInit{
     
   );
 
+  getColspan(cols:number){
+    if(cols==4){
+      return 2;
+    }else{
+      return 1;
+    }
+  }
+
   redrawChart(chart: any,color:string) {
 
+    setTimeout(() => {
     // Ejecuta el redimensionamiento del gráfico
     chart.windowResizeHandler();
 
     // Espera un momento y luego aplica el color a las etiquetas
-    setTimeout(() => {
+    
       this.colorLabels(color);
     }, 200); // Ejecutar en el siguiente ciclo de eventos
     

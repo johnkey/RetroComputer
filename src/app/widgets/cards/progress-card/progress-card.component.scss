@@ -40,13 +40,15 @@
     .statistics-number p:nth-child(1){
       font-size: 10em;
       padding-top: 0.2em;
+
     }
     .statistics-number p:nth-child(2){
       font-size: 2em;
       color: var(--mdc-theme-text-secondary-on-dark);
       padding-top: 1em;
     }
-    
+
+ 
     .progress{
       display: flex !important;
       font-size: 1.2em;

@@ -4,7 +4,7 @@
           <mat-grid-tile>
             <app-ngx-heat-map title="Time Range Heat Map" [options]="heatMapOptions"></app-ngx-heat-map>
           </mat-grid-tile>
-          <mat-grid-tile colspan="2">
+          <mat-grid-tile [colspan]="getColspan(cols[0].cols)">
             <app-ngx-advanced-pie-chart title="Countries" [options]="advancedPieOptios"></app-ngx-advanced-pie-chart>
           </mat-grid-tile>
          
@@ -26,7 +26,7 @@
           <mat-grid-tile>
             <app-ngx-heat-map title="Time Range Heat Map" [options]="heatMapOptions" mode="transparent"></app-ngx-heat-map>
           </mat-grid-tile>
-          <mat-grid-tile colspan="2">
+          <mat-grid-tile [colspan]="getColspan(cols[0].cols)">
             <app-ngx-advanced-pie-chart title="Countries" [options]="advancedPieOptios" mode="transparent"></app-ngx-advanced-pie-chart>
           </mat-grid-tile>
          

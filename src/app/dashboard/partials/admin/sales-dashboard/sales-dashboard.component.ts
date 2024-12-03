@@ -44,7 +44,7 @@ export class SalesDashboardComponent implements OnInit{
   }
 
  /** Based on the screen size, switch from standard to one column per row */
- cols$ = this.breakpointObserver.observe([Breakpoints.Handset,Breakpoints.TabletPortrait]).pipe(
+ cols$ = this.breakpointObserver.observe([Breakpoints.Handset,Breakpoints.HandsetPortrait,Breakpoints.TabletLandscape,Breakpoints.TabletPortrait,Breakpoints.Small,Breakpoints.Tablet,Breakpoints.WebPortrait]).pipe(
   map(({ matches }) => {
     if (matches) {
       return [

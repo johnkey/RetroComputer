@@ -45,4 +45,17 @@ mat-card-content > div{
   border: 4px solid ;
 }
 
+::ng-deep .item-value{
+  font-size: 1.5em !important;
+  
+
+  @media screen and (max-width: 599.98px) and (orientation: portrait) {
+    font-size: 0.7em  !important;
+  } 
+  @media screen and (min-width: 960px) and (max-width: 1279.98px) and (orientation: landscape){
+    font-size: 1.3em  !important;
+  } 
+
+}
+
 

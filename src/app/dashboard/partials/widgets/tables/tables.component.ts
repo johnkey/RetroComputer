@@ -159,11 +159,11 @@ export class TablesComponent implements AfterViewInit {
       if (matches) {
         return [
           
-          { title: 'Basic', cols: 1, rows: 1 ,template:"elements",mode:"transparent"},
-          { title: 'Table with expandable rows', cols: 1, rows: 1 ,template:"expandable",mode:"transparent"},
-          { title: 'Basic', cols: 1, rows: 1 ,template:"elements"},
-          { title: 'Table with pagination', cols: 1, rows: 1 ,template:"pagination"},
-          { title: 'Table with filter', cols: 1, rows: 1 ,template:"filtered"}       
+          { title: 'Basic', cols: 1, rows: 2 ,template:"elements",mode:"transparent"},
+          { title: 'Table with expandable rows', cols: 1, rows: 2 ,template:"expandable",mode:"transparent"},
+          { title: 'Basic', cols: 1, rows: 2 ,template:"elements"},
+          { title: 'Table with pagination', cols: 1, rows: 2 ,template:"pagination"},
+          { title: 'Table with filter', cols: 1, rows: 2 ,template:"filtered"}       
         ];
       }
 

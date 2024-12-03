@@ -1,6 +1,6 @@
 <h1 >Tables</h1>
 
-        <mat-grid-list cols="2" rowHeight="350px">
+        <mat-grid-list [cols]="cols$ | async" rowHeight="350px">
           <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
             <mat-card class="dashboard-card" [ngClass]="card.mode">
               <mat-card-header>

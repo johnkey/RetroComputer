@@ -1,8 +1,8 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit} from '@angular/core';
+import {  Component,  OnInit, ViewChild} from '@angular/core';
 import { map } from 'rxjs';
 import { ThemeService } from 'src/app/theme.service';
-import { NumberCardOptions } from 'src/app/widgets/charts/ngx-charts/ngx-number-cards/ngx-number-cards.component';
+import { NgxNumberCardsComponent, NumberCardOptions } from 'src/app/widgets/charts/ngx-charts/ngx-number-cards/ngx-number-cards.component';
 import {  downloads, lastConnections, numberCarddata, payments } from './data';
 import { ScaleType } from '@swimlane/ngx-charts';
 import { ColorService } from 'src/app/color.service';
@@ -60,7 +60,10 @@ export interface Payments {
   ]
 })
 export class UserProfileComponent implements OnInit {
-  
+
+ 
+  @ViewChild('numberCards', { static: false }) numberCardsComponent!: NgxNumberCardsComponent;
+
   numberCardOptions!:NumberCardOptions;
   user:Person={
     nick: "Lucario78",
@@ -87,6 +90,8 @@ export class UserProfileComponent implements OnInit {
 
     
   }
+ 
+ 
 
   ngOnInit(): void {
 
@@ -97,9 +102,10 @@ export class UserProfileComponent implements OnInit {
     });
     
     this.initializeOptions();
-
+    
 
   }
+
   
   initializeOptions(): void {
 
@@ -109,6 +115,7 @@ export class UserProfileComponent implements OnInit {
     let foregroundText: string = getComputedStyle(document.body).getPropertyValue("--mdc-theme-text-primary-on-dark");
     let primaryColor: string = getComputedStyle(document.body).getPropertyValue("--mdc-theme-primary");
 
+    
     this.numberCardOptions={
       results: numberCarddata,
       view: [750, 150],
@@ -125,17 +132,17 @@ export class UserProfileComponent implements OnInit {
   }
 
   /** Based on the screen size, switch from standard to one column per row */
- cols$ = this.breakpointObserver.observe([Breakpoints.Handset,Breakpoints.TabletPortrait]).pipe(
+ cols$ = this.breakpointObserver.observe([Breakpoints.Handset,Breakpoints.Tablet,Breakpoints.Small]).pipe(
   map(({ matches }) => {
+    
     if (matches) {
-      this.numberCardOptions.view=[300,750];
       return [
-        { row: '1', cols: 1, rows: 4 },
+        { row: '1', cols: 1, rows: 2 },
         { row: '2', cols: 1, rows: 1 },
         { row: '3', cols: 1, rows: 1 }
       ];
     }
-    this.numberCardOptions.view=[750, 150];
+
     return [
       { row: '1', cols: 4, rows: 1 },
       { row: '2', cols: 4, rows: 1 },
@@ -144,6 +151,28 @@ export class UserProfileComponent implements OnInit {
     })
   );
 
+
+  /* cols$ = this.breakpointObserver.observe([Breakpoints.Handset,Breakpoints.TabletPortrait,Breakpoints.Tablet]).pipe(
+    map((result) => {
+      
+      if (result.breakpoints[Breakpoints.Tablet]) {
+        console.log('TABLET');
+        return [
+          { row: '1', cols: 1, rows: 2 },
+          { row: '2', cols: 1, rows: 1 },
+          { row: '3', cols: 1, rows: 1 }
+        ];
+      }
+  
+      return [
+        { row: '1', cols: 4, rows: 1 },
+        { row: '2', cols: 4, rows: 1 },
+        { row: '3', cols: 2, rows: 1 }
+      ];
+      })
+    ); */
+
+    
   trackByColumn(index: number, column: string): any {
     return column;  // Esto es simple, ya que la columna es un string único.
   }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit ,inject} from '@angular/core';
+import { Component, Input, OnChanges, OnInit ,SimpleChanges,inject} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 export interface Person{
@@ -17,6 +17,7 @@ export interface Person{
   styleUrl: './user-card.component.scss'
 })
 export class UserCardComponent implements OnInit{
+ 
 
   isEditable:boolean=false;
 
@@ -45,6 +46,7 @@ export class UserCardComponent implements OnInit{
     });
     
   }
+
 
   edit() {
 

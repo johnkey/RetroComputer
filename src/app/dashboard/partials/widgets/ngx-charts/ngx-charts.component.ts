@@ -69,6 +69,14 @@ export class NgxChartsComponent implements OnInit{
     
     
   );
+
+  getColspan(cols:number){
+    if(cols==4){
+      return 2;
+    }else{
+      return 1;
+    }
+  }
   
 
   private initializeOptions() {

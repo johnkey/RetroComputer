@@ -32,6 +32,10 @@
   table{
    
     padding: 20px;
+
+    @media screen and (max-width: 839.98px) {
+      padding: 0px;
+    }
     
   }
   .mat-mdc-header-cell{
