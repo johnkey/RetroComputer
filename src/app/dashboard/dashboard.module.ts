@@ -16,7 +16,6 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ButtonsComponent } from './partials/widgets/buttons/buttons.component';
 import { RouterModule, Routes } from '@angular/router';
-import { ProjectsDashboardComponent } from './partials/admin/projects-dashboard/projects-dashboard.component';
 import { TablesComponent } from './partials/widgets/tables/tables.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
@@ -46,7 +45,6 @@ const routes: Routes=[]
     DashboardComponent,
     SidenavComponent,
     ButtonsComponent,
-    ProjectsDashboardComponent,
     TablesComponent,
     FormsComponent,
     UserProfileComponent,
