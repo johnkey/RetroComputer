@@ -46,6 +46,38 @@
     display: flex;
     align-items: center;
     padding-top: 10px;
+    position: relative;
+  }
+
+  :host ::ng-deep .no-caret {
+    caret-color: transparent; /* Ocultar el cursor original */
+    position: relative; /* Para el pseudo-elemento ::after */
+    flex: 1;
+    transform: translateX(-1em);
+  }
+  .placeholder {
+    position: relative; /* Necesario para moverlo dentro del input */
+    top: 0;
+    left: 0;
+    color: var(--mdc-theme-primary);
+    pointer-events: none; /* Para que no interfiera con clics */
+    animation: blink 1s infinite;
+    height: 1em;
+    width: 1em;
+    background-color: var(--mdc-theme-primary);
+    //transition: transform 0.1s linear; /* Suaviza el movimiento */
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   .command-input input::placeholder {

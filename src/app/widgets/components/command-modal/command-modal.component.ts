@@ -13,6 +13,7 @@ export class CommandModalComponent {
   command: string = '';
   terminalOutput: string[] = [];
   prompt: string = 'C:\\Windows\\System32>';
+  cursorPosition:number=0;
 
   constructor(public dialogRef: MatDialogRef<CommandModalComponent>) { }
 
@@ -36,6 +37,7 @@ export class CommandModalComponent {
         this.terminalOutput.push(`Command not found: ${this.command}`);
       }
       this.command = ''; // Reset command input
+      this.cursorPosition = 0;
     }
   }
 
@@ -45,6 +47,21 @@ export class CommandModalComponent {
 
   focusInput() {
     this.commandInput.nativeElement.focus();
+  }
+
+  updateCursorPosition(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    const textWidth = this.getTextWidth(inputElement.value, inputElement);
+    this.cursorPosition = textWidth;
+  }
+
+  getTextWidth(text: string, input: HTMLInputElement): number {
+    // Crear un canvas temporal para medir el ancho del texto
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d')!;
+    const style = getComputedStyle(input);
+    context.font = style.font;
+    return context.measureText(text).width;
   }
   
 }

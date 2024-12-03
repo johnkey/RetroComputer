@@ -12,7 +12,9 @@
         <div *ngFor="let line of terminalOutput" class="prompt">{{ line }}</div>
         <div class="command-input" >
           <span class="prompt">{{ prompt }}</span>
-          <input [(ngModel)]="command" (keyup.enter)="executeCommand()" placeholder="_" #commandInput />
+          <span class="placeholder"  [style.transform]="'translateX(' + cursorPosition + 'px)'">&nbsp;</span>
+          <input [(ngModel)]="command" (keyup.enter)="executeCommand()" #commandInput class="no-caret" (input)="updateCursorPosition($event)"/>
+          
         </div>
       </div>
     </div>
