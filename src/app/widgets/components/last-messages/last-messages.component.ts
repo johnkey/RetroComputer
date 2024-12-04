@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Message } from '../chat/chat.component';
 
 @Component({
   selector: 'app-last-messages',
@@ -7,14 +8,7 @@ import { Component } from '@angular/core';
 })
 export class LastMessagesComponent {
 
-
-  messages = [
-    { sender: 'Anita', text: 'Amazing!!' },
-    { sender: 'Rolo33', text: 'What fun!!!' },
-    { sender: 'Anita', text: 'you are so funny' },
-    { sender: 'Lucario78', text: 'Has anyone finished Space Invaders?' },
-    { sender: 'john_key', text: 'It\'s GOAT' }
-    
-  ];
+  @Input()
+  messages!:Message[];
 
 }

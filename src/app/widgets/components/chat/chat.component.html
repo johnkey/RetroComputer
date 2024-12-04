@@ -19,9 +19,9 @@
         <div fxLayout="row" style="margin-top: 20px;" fxLayoutGap="8px"> 
            <mat-form-field  appearance="outline" subscriptSizing="dynamic" class="full-width">
                 <mat-label>Send message</mat-label>
-                <input matInput [(ngModel)]="newMessage" (keydown.enter)="sendMessage()"/>
+                <input matInput [(ngModel)]="newMessage" (keydown.enter)="send()"/>
             </mat-form-field>
-            <button mat-raised-button color="primary" (click)="sendMessage()">Enviar</button>
+            <button mat-raised-button color="primary" (click)="send()">Enviar</button>
         </div>
     </mat-card-content>
   </mat-card>

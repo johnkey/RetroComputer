@@ -39,6 +39,8 @@ export class PricingCardComponent implements OnInit{
   @Input()
   items!:Pricing;
 
+  @Input()
+  onSubmit!:Function;
   
 
   
@@ -52,9 +54,9 @@ export class PricingCardComponent implements OnInit{
     
   }
 
-  onSubmit() {
+  submit() {
    
-      console.log('buy');
+      this.onSubmit();
   
   }
 

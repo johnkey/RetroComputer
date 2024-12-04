@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class LogingComponentsComponent {
 
+ submit():any{
+   console.log("Login operation");
+ }
+
+ register():any{
+  console.log("Redirect to register");
+}
+
 }

@@ -177,6 +177,19 @@ export class UserProfileComponent implements OnInit {
     return column;  // Esto es simple, ya que la columna es un string único.
   }
   
+  save(){
+    console.log("User saved");
+  }
+
+  messages = [
+    { sender: 'Lucario78', text: 'Hello, I can\'t download' },
+    { sender: 'You', text: 'Hi!,How can I help you?' },
+  ];
+
+  sendMessage(): void {
+    console.log("Message Sended");
+  }
+
   
 
 }

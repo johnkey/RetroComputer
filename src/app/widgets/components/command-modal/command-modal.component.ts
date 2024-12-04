@@ -14,6 +14,7 @@ export class CommandModalComponent {
   terminalOutput: string[] = [];
   prompt: string = 'C:\\Windows\\System32>';
   cursorPosition:number=0;
+  
 
   constructor(public dialogRef: MatDialogRef<CommandModalComponent>) { }
 

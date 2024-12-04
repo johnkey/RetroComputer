@@ -5,6 +5,7 @@ import { ThemeService } from 'src/app/theme.service';
 
 import { trendigGames } from './data';
 import { GameCard } from 'src/app/widgets/cards/game-card/game-card.component';
+import { Message } from 'src/app/widgets/components/chat/chat.component';
 
 /* const HANDSET_PORTRAIT = "(max-width: 599.98px) and (orientation: portrait)";
 const HANDSET_LANDSCAPE = "(max-width: 959.98px) and (orientation: landscape)";
@@ -191,27 +192,18 @@ export class GamesCatalogComponent implements OnInit{
   }
 
 
-  currentIndex = 0;
-
-  moveLeft() {
-    if (this.currentIndex > 0) {
-      this.currentIndex--;
-    }
-  }
-
-  moveRight() {
-    if (this.currentIndex < this.games.length - 1) {
-      this.currentIndex++;
-    }
-  }
-
-  getTransform() {
-    return `translateX(-${this.currentIndex * 320}px)`; // Ajusta 320px al ancho de cada tarjeta + margen
-  }
-
   getColspan(cols: number): number {
     return Math.max(cols - 1, 1);
   }
+
+  lastMessages:Message[] = [
+    { sender: 'Anita', text: 'Amazing!!' },
+    { sender: 'Rolo33', text: 'What fun!!!' },
+    { sender: 'Anita', text: 'you are so funny' },
+    { sender: 'Lucario78', text: 'Has anyone finished Space Invaders?' },
+    { sender: 'john_key', text: 'It\'s GOAT' }
+    
+  ];
 
   
 

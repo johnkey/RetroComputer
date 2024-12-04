@@ -14,7 +14,7 @@ export class ApexChartComponent {
   public chartOptions: Partial<ApexOptions> | any;
   
   @Input()
-  options!: ApexOptions ;
+  options!: ApexOptions;
 
   @Input()
   mode!: string;

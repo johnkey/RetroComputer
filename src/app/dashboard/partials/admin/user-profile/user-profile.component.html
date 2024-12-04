@@ -23,7 +23,7 @@
   rowHeight="200px"
 >
   <mat-grid-tile rowspan="4">
-    <app-user-card mode="transparent" [user]="user"></app-user-card>
+    <app-user-card mode="transparent" [user]="user" [onSubmit]="save"></app-user-card>
   </mat-grid-tile>
   <mat-grid-tile>
     <div class="level-container">
@@ -177,7 +177,7 @@
   </mat-grid-tile>
   <mat-grid-tile rowspan="3">
     <div class="full-height">
-      <app-chat class="chat-room"></app-chat>
+      <app-chat class="chat-room" [(messages)]="messages" [onSend]="sendMessage"></app-chat>
     </div>
   </mat-grid-tile>
 </mat-grid-list>

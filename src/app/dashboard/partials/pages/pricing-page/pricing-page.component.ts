@@ -175,6 +175,10 @@ export class PricingPageComponent implements OnInit{
         }
       ]
     };
+
+    submit(){
+      console.log("Buyed");
+    }
    
 
   };

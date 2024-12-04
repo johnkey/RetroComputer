@@ -23,7 +23,7 @@ export class NgxChartsComponent implements OnInit{
   heatMapOptions!:HeatMapOptions;
   advancedPieOptios!:AdvancedPieChartOptions;
   gridPieOptions!:GridPieChartOptions;
-  lineChartOptions!: LineChartOptions
+  lineChartOptions!: LineChartOptions;
   verticalBarOptions!: BarChartOptions;
   horizontalBarOptions!: BarChartOptions;
 

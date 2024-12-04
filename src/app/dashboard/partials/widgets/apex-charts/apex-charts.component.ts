@@ -1,8 +1,6 @@
 import { Component,Input,OnChanges,OnInit,SimpleChanges,inject } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
-import { ProgressCard, ProgressCardComponent } from 'src/app/widgets/cards/progress-card/progress-card.component';
-import { SpinnerCardComponent } from 'src/app/widgets/cards/spinner-card/spinner-card.component';
 
 import { ThemeService } from 'src/app/theme.service';
 import * as ApexCharts from 'apexcharts';
@@ -33,7 +31,7 @@ export class ApexChartsComponent implements OnInit,OnChanges{
   basicColumnChartOptions!:ApexOptions;
   areaChartOptions!:ApexOptions;
 
-  constructor(private themeService: ThemeService,card: ProgressCardComponent,spinnerCard: SpinnerCardComponent, private breakpointObserver: BreakpointObserver) {
+  constructor(private themeService: ThemeService, private breakpointObserver: BreakpointObserver) {
 
     
   }
@@ -413,27 +411,6 @@ export class ApexChartsComponent implements OnInit,OnChanges{
      
   }
 
-  
-
-  progressCard1: ProgressCard = {
-    title: "Work in Progress",
-    showMenu: false,
-    value: "215",
-    text: "Story Points",
-    pendding: "50",
-    progress: "69%"
-  };
-
-  progressCard2: ProgressCard = {
-    title: "Propossal",
-    showMenu: false,
-    value: "360",
-    text: "Time Units",
-    pendding: "120",
-    progress: "75%"
-  };
-
-  
 
   /** Based on the screen size, switch from standard to one column per row */
   cols$ = this.breakpointObserver.observe([Breakpoints.Handset,Breakpoints.TabletPortrait]).pipe(

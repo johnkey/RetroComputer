@@ -1,18 +1,18 @@
 <h1>Themed</h1>
 <div class="pricing-container"  [fxLayout]="!isHandset ? 'row' : 'column'" fxLayoutAlign="center center" fxLayoutGap="24px">
-    <app-pricing-card class="pricing-item" [items]="pricingFree"></app-pricing-card>
-    <app-pricing-card class="pricing-item" [items]="pricingMedium"></app-pricing-card>
-    <app-pricing-card class="pricing-item" [items]="pricingPremium"></app-pricing-card>
+    <app-pricing-card class="pricing-item" [items]="pricingFree" ></app-pricing-card>
+    <app-pricing-card class="pricing-item" [items]="pricingMedium" [onSubmit]="submit"></app-pricing-card>
+    <app-pricing-card class="pricing-item" [items]="pricingPremium" [onSubmit]="submit"></app-pricing-card>
 </div>
 <h1>Boxed</h1>
 <div class="pricing-container"  [fxLayout]="!isHandset ? 'row' : 'column'" fxLayoutAlign="center center" fxLayoutGap="24px">
     <app-pricing-card class="pricing-item" [items]="pricingFree" mode="box"></app-pricing-card>
-    <app-pricing-card class="pricing-item" [items]="pricingMedium" mode="box"></app-pricing-card>
-    <app-pricing-card class="pricing-item" [items]="pricingPremium" mode="box"></app-pricing-card>
+    <app-pricing-card class="pricing-item" [items]="pricingMedium" mode="box" [onSubmit]="submit"></app-pricing-card>
+    <app-pricing-card class="pricing-item" [items]="pricingPremium" mode="box" [onSubmit]="submit"></app-pricing-card>
 </div>
 <h1>transparent</h1>
 <div class="pricing-container"  [fxLayout]="!isHandset ? 'row' : 'column'" fxLayoutAlign="center center" fxLayoutGap="24px">
     <app-pricing-card class="pricing-item" [items]="pricingFree" mode="transparent"></app-pricing-card>
-    <app-pricing-card class="pricing-item" [items]="pricingMedium" mode="transparent"></app-pricing-card>
-    <app-pricing-card class="pricing-item" [items]="pricingPremium" mode="transparent"></app-pricing-card>
+    <app-pricing-card class="pricing-item" [items]="pricingMedium" mode="transparent" [onSubmit]="submit"></app-pricing-card>
+    <app-pricing-card class="pricing-item" [items]="pricingPremium" mode="transparent" [onSubmit]="submit"></app-pricing-card>
 </div>

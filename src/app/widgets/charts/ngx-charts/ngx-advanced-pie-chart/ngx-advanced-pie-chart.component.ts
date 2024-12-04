@@ -54,7 +54,7 @@ export class NgxAdvancedPieChartComponent implements OnInit,OnChanges,AfterViewI
     this.resizeObserver = new ResizeObserver(entries => {
       for (let entry of entries) {
         const { width, height } = entry.contentRect;
-        this.adjustToParent(width-52, height-52);
+        this.adjustToParent(width-52, height-86);
       }
     });
 

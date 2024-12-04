@@ -21,11 +21,12 @@ export class GamesCarouselComponent implements AfterViewInit,OnChanges,OnDestroy
   @Input()
   mode!: string;
 
-  @Input()
-  cicle:boolean = true;
 
-  @Input() visibleItems!:number; // Número inicial de ítems visibles
-  @Input() step = 1; // Número de ítems a desplazar
+
+  @Input() 
+  visibleItems!:number; // Número inicial de ítems visibles
+  @Input() 
+  step = 1; // Número de ítems a desplazar
   itemWidth = 0; // Ancho dinámico de cada ítem
   currentIndex = 0;
   forward= 0;
@@ -86,22 +87,6 @@ export class GamesCarouselComponent implements AfterViewInit,OnChanges,OnDestroy
   }
   
 
-  get canMoveLeft(): boolean {
-    if(this.cicle){
-      return true;
-    }else{
-      return this.currentIndex > 0;
-    }
-    
-  }
-  
-  get canMoveRight(): boolean {
-    if(this.cicle){
-      return true;
-    }else{
-      return this.currentIndex < this.games.length - 1;
-    }
-    
-  }
+ 
 
 }

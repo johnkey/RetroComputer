@@ -24,7 +24,7 @@ export class DashboardComponent implements AfterViewInit {
 
   panelOpenState = false;
 
-  isHandsetSideNav$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Handset,Breakpoints.HandsetPortrait,Breakpoints.TabletLandscape,Breakpoints.TabletPortrait,Breakpoints.Large,Breakpoints.Medium,Breakpoints.Small,Breakpoints.Tablet,Breakpoints.WebPortrait])
+  isHandsetSideNav$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Handset,Breakpoints.HandsetPortrait,Breakpoints.TabletLandscape,Breakpoints.TabletPortrait,Breakpoints.Medium,Breakpoints.Small,Breakpoints.Tablet,Breakpoints.Large])
     .pipe(
       map(result => result.matches),
       shareReplay()

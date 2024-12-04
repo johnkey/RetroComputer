@@ -12,6 +12,12 @@ export class LoginComponent implements OnInit{
   @Input()
   mode!:string;
 
+  @Input()
+  onSubmit!:Function;
+
+  @Input()
+  onRegister!:Function;
+
   isRetro:boolean=false;
 
   loginForm: FormGroup;
@@ -32,14 +38,14 @@ export class LoginComponent implements OnInit{
     }
   }
 
-  onSubmit() {
+  submit():any {
     if (this.loginForm.valid) {
-      console.log('Login successful', this.loginForm.value);
+      return this.onSubmit();
     }
   }
 
-  onRegister() {
-    console.log('Redirect to registration');
+  register():any {
+    return this.onRegister();
   }
 
   

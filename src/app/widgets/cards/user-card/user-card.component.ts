@@ -29,6 +29,9 @@ export class UserCardComponent implements OnInit{
   @Input()
   user!: Person;
 
+  @Input()
+  onSubmit!:Function;
+
 
   //super retro form
   userForm!:FormGroup;
@@ -62,6 +65,7 @@ export class UserCardComponent implements OnInit{
   }
 
   save() {
+    this.onSubmit();
     this.userForm.disable();
     this.isEditable=false;
     
