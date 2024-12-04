@@ -12,9 +12,12 @@ $sidenav-width: 240px;
   overflow-x: hidden;
   height: 90%;
   width: $sidenav-width;
+  min-width: $sidenav-width;
   position: relative;
   
-
+  .sidenav-theme{
+    min-width: $sidenav-width;
+  }
   //menu expansion panel
   .mat-expansion-panel.menu-accordion{
     overflow: visible;
