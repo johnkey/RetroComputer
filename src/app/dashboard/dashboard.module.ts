@@ -34,7 +34,6 @@ import { ApexChartsComponent } from './partials/widgets/apex-charts/apex-charts.
 import { NgxChartsComponent } from './partials/widgets/ngx-charts/ngx-charts.component';
 import { SalesDashboardComponent } from './partials/admin/sales-dashboard/sales-dashboard.component';
 import { GamesCatalogComponent } from './partials/pages/games-catalog/games-catalog.component';
-import { CarouselModule } from 'primeng/carousel';
 import { LogingComponentsComponent } from './partials/pages/loging-components/loging-components.component';
 import { PricingPageComponent } from './partials/pages/pricing-page/pricing-page.component';
 import { MatDialogModule } from '@angular/material/dialog';
