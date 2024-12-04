@@ -14,15 +14,21 @@ import { GamesCatalogComponent } from './dashboard/partials/pages/games-catalog/
 
 import { LogingComponentsComponent } from './dashboard/partials/pages/loging-components/loging-components.component';
 import { PricingPageComponent } from './dashboard/partials/pages/pricing-page/pricing-page.component';
+import { MainComponent } from './dashboard/partials/main/main.component';
 
 const routes: Routes = [
   {
-    path:"",redirectTo:"dashboard",pathMatch:"full"
+    path:"",redirectTo:"dashboard/main",pathMatch:"full"
   },
   {
     path: 'dashboard',
     component: DashboardComponent, 
     children: [
+      {
+        path: '', 
+        redirectTo: 'main', 
+        pathMatch: 'full' 
+      },
       {
         path: 'buttons', 
         component: ButtonsComponent, 
@@ -64,6 +70,10 @@ const routes: Routes = [
       {
         path: 'pricing', 
         component: PricingPageComponent
+      },
+      {
+        path: 'main', 
+        component: MainComponent
       }
 
     ],

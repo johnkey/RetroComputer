@@ -1,0 +1,117 @@
+
+
+/* Grid (malla) */
+/* .grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      linear-gradient(0deg, transparent 90%,var(--mdc-theme-primary) 100%),
+      linear-gradient(90deg, transparent 90%, var(--mdc-theme-primary) 100%);
+    background-size: 100px 100px;
+    transform-origin: center;
+    transform: perspective(600px) rotateX(60deg);
+    
+    opacity: 0.8;
+  } */
+  :host {
+    display: block;
+    height: 100vh; 
+  }
+  
+  .main-container {
+    position: relative;
+    display: flex;
+    flex-direction: column; 
+    justify-content: start; 
+    align-items: center; 
+    height: 100%; 
+    width: 100%;
+    overflow: hidden; 
+  }
+  
+  .title-container {
+    z-index: 10; 
+    text-align: center;
+  }
+  
+  .title {
+    margin-top: 1.5em !important;
+    font-size: 8em; 
+    color: var(--mdc-theme-primary); 
+    text-shadow: 0 0 10px var(--mdc-theme-highlight); 
+    margin: 0;
+    @media screen and (max-width: 599.98px) and (orientation: portrait), (max-width: 959.98px) and (orientation: landscape) {
+        font-size: 3em; 
+    }
+    @media screen and (min-width: 600px) and (max-width: 839.98px) and (orientation: portrait), (min-width: 960px) and (max-width: 1279.98px) and (orientation: landscape) {
+        font-size: 6em; 
+    }
+    
+    display: flex;
+  }
+  .title::before {
+    content: '>:_';
+  }
+  
+  .grid {
+    position: absolute;
+    top: -1.5em;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            var(--mdc-theme-primary) 0px,
+            var(--mdc-theme-primary) 2px,
+            transparent 2px,
+            transparent 60px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            var(--mdc-theme-primary) 0px,
+            var(--mdc-theme-primary) 2px,
+            transparent 2px,
+            transparent 60px
+        ); 
+    background-size: 100% 100%; /* Escala según el contenedor */
+    transform: perspective(800px) rotateX(60deg);
+    z-index: 0; /* Detrás del texto */
+  }
+
+  .placeholder {
+    position: relative; /* Necesario para moverlo dentro del input */
+    top: 0;
+    left: 0;
+    color: var(--mdc-theme-primary);
+    pointer-events: none; /* Para que no interfiera con clics */
+    animation: blink 1s infinite;
+    height: 0.5em !important;
+    width: 0.4em !important;
+    background-color: var(--mdc-theme-primary);
+    @media screen and (max-width: 599.98px) and (orientation: portrait), (max-width: 959.98px) and (orientation: landscape) {
+        height: 0.8em !important;
+        width: 0.7em !important; 
+    }
+    @media screen and (min-width: 600px) and (max-width: 839.98px) and (orientation: portrait), (min-width: 960px) and (max-width: 1279.98px) and (orientation: landscape) {
+        height: 0.6em !important;
+        width: 0.5em !important; 
+    }
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+

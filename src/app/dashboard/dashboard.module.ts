@@ -37,6 +37,7 @@ import { GamesCatalogComponent } from './partials/pages/games-catalog/games-cata
 import { LogingComponentsComponent } from './partials/pages/loging-components/loging-components.component';
 import { PricingPageComponent } from './partials/pages/pricing-page/pricing-page.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MainComponent } from './partials/main/main.component';
 const routes: Routes=[]
 
 @NgModule({
@@ -52,7 +53,8 @@ const routes: Routes=[]
     SalesDashboardComponent,
     GamesCatalogComponent,
     LogingComponentsComponent,
-    PricingPageComponent
+    PricingPageComponent,
+    MainComponent
     
   ],
   imports: [
