@@ -1,5 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { AfterViewInit, ChangeDetectorRef, Component, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, inject, OnInit, ViewChild } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/internal/operators/map';
 import { shareReplay } from 'rxjs/internal/operators/shareReplay';
@@ -12,23 +13,25 @@ import { ThemeService } from 'src/app/theme.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements AfterViewInit {
+export class DashboardComponent implements OnInit,AfterViewInit {
 
   constructor(private themeService: ThemeService,private cdr: ChangeDetectorRef) {}
+  
 
   ngAfterViewInit() {
     this.cdr.detectChanges(); 
   }
+
+  ngOnInit(): void {
+    this.breakpointObserver.observe([Breakpoints.Handset,Breakpoints.HandsetPortrait,Breakpoints.TabletLandscape,Breakpoints.TabletPortrait,Breakpoints.Medium,Breakpoints.Small,Breakpoints.Tablet,Breakpoints.Large]).subscribe(result => {
+      this.isHandsetSideNav = result.matches;
+    });
+  }
+
   
   private breakpointObserver = inject(BreakpointObserver);
 
-  panelOpenState = false;
-
-  isHandsetSideNav$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Handset,Breakpoints.HandsetPortrait,Breakpoints.TabletLandscape,Breakpoints.TabletPortrait,Breakpoints.Medium,Breakpoints.Small,Breakpoints.Tablet,Breakpoints.Large])
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
+  isHandsetSideNav: boolean = false; 
 
   
   logout(){
@@ -51,3 +54,5 @@ export class DashboardComponent implements AfterViewInit {
   
 
 }
+
+

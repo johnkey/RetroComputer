@@ -1,4 +1,5 @@
 <h1>Themed</h1>
+<div>
 <div class="pricing-container"  [fxLayout]="!isHandset ? 'row' : 'column'" fxLayoutAlign="center center" fxLayoutGap="24px">
     <app-pricing-card class="pricing-item" [items]="pricingFree" ></app-pricing-card>
     <app-pricing-card class="pricing-item" [items]="pricingMedium" [onSubmit]="submit"></app-pricing-card>
@@ -15,4 +16,5 @@
     <app-pricing-card class="pricing-item" [items]="pricingFree" mode="transparent"></app-pricing-card>
     <app-pricing-card class="pricing-item" [items]="pricingMedium" mode="transparent" [onSubmit]="submit"></app-pricing-card>
     <app-pricing-card class="pricing-item" [items]="pricingPremium" mode="transparent" [onSubmit]="submit"></app-pricing-card>
+</div>
 </div>

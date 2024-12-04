@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit, QueryList, ViewChild, ViewChildren, inject } from '@angular/core';
+import { Component, EventEmitter, Injectable, OnInit, Output, QueryList, ViewChild, ViewChildren, inject } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { merge } from 'rxjs';
@@ -159,7 +159,7 @@ export class DynamicDataSource implements DataSource<DynamicFlatNode> {
 })
 export class SidenavComponent implements OnInit{
 
-  
+  @Output() closeSidebar: EventEmitter<void> = new EventEmitter<void>();
 
   private breakpointObserver = inject(BreakpointObserver);
 
@@ -183,6 +183,11 @@ export class SidenavComponent implements OnInit{
     this.database = database;
     
   }
+
+  onItemClick() {
+    this.closeSidebar.emit(); 
+  }
+
   ngOnInit(): void {
     this.treeControl = new FlatTreeControl<DynamicFlatNode>(this.getLevel, this.isExpandable);
     this.dataSource = new DynamicDataSource(this.treeControl, this.database);

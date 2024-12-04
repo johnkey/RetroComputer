@@ -65,7 +65,7 @@
             </mat-expansion-panel-header>
             <div class="menu-expansion-body"> 
               <mat-selection-list MatListOption [multiple]="false" hideSingleSelectionIndicator=true>
-                <mat-list-option *ngFor="let subOpt of this.database.getChildren(option.item)" routerLink="{{subOpt.link}}"> 
+                <mat-list-option *ngFor="let subOpt of this.database.getChildren(option.item)" routerLink="{{subOpt.link}}" (click)="onItemClick()"> 
                   <mat-icon matListItemIcon>{{subOpt.icon}}</mat-icon>
                   <div matListItemTitle >{{subOpt.item}}</div>
                   <!-- <a matListItemTitle>{{subOpt.item}} >:_</a> -->

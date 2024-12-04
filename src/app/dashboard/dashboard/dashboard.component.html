@@ -17,10 +17,10 @@
 
 <mat-drawer-container autosize>
   <mat-drawer #drawer fixedInViewport
-  [attr.role]="(isHandsetSideNav$ | async) ? 'dialog' : 'navigation'"
-  [mode]="(isHandsetSideNav$ | async) ? 'over' : 'side'"
-  [opened]="(isHandsetSideNav$ | async) === false">
-    <app-sidenav></app-sidenav>
+  [attr.role]="isHandsetSideNav ? 'dialog' : 'navigation'"
+  [mode]="isHandsetSideNav ? 'over' : 'side'"
+  [opened]="isHandsetSideNav === false">
+    <app-sidenav (closeSidebar)="isHandsetSideNav ? drawer.close() : null"></app-sidenav>
   </mat-drawer>
   <mat-drawer-content>
     <div class="oldscreeneffect">

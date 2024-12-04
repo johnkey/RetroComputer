@@ -3,10 +3,13 @@ mat-drawer.mat-drawer-side {
 }
 
 mat-drawer-container{
-  height: 98%;
+  height: 94vh;
   max-height: calc(100vh - var(--mat-toolbar-standard-height));
   overflow: none;
   box-sizing:border-box;
+}
+mat-drawer-content{
+  overflow: hidden !important;
 }
 
 
@@ -22,6 +25,9 @@ mat-drawer-container{
     width: 100%;
     text-align:center;
   }
+
+  height: 92vh;
+  overflow: auto;
 
 }
 mat-slide-toggle{
