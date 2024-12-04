@@ -34,7 +34,11 @@
               "src/styles.scss",
               "src/custom-theme.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "optimization": {
+              "styles": true,
+              "scripts": true
+            }
           },
           "configurations": {
             "production": {
