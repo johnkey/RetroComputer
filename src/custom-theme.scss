@@ -84,28 +84,29 @@ $monochrome-green-palette: (
   )
 ); */
 
+//Pallete for amber monochrome screen
 $monochrome-amber-palette: (
-  50: #fff4b2, // Más claro
+  50: #fff4b2, 
   100: #ffe866,
   200: #ffe233,
   300: #ffd102,
   400: #e0ba02,
-  500: #ffd102, // Color principal
+  500: #ffd102, 
   600: #b79502,
   700: #8f7702,
   800: #745d01,
-  900: #5e4901, // Más oscuro
+  900: #5e4901, 
   A100: #ffe866,
   A200: #ffd102,
   A400: #e0ba02,
   A700: #b79502,
   contrast: (
-    50: #222121, // Contraste para colores claros
+    50: #222121, 
     100: #222121,
     200: #222121,
     300: #222121,
     400: #222121,
-    500: #5c3f00, // Contraste para el color principal
+    500: #5c3f00, 
     600: #5c3f00,
     700: #5c3f00,
     800: #5c3f00,
@@ -120,21 +121,24 @@ $monochrome-amber-palette: (
 
 
 //Modify these colors in relation to your color palette as these colors will be used to give the monochromatic effect
+
 //custom monochrome colors for green theme
 $foregroundColor: #00FE1A;
 $screenColor: #003D02;
 $screenBorder: #222121;
 $radiance: #44ff99; //radiance effect
+
+//custom monochrome colors for amber theme
+$foregroundColor-amber: #ffd102;
+$screenColor-amber: #5c3f00;
+$screenBorder-amber: #222121;
+$radiance-amber: #ffbb00; //radiance effect
+
 //custom monochrome colors for amber theme
 /* $foregroundColor-amber: #ffbb00;
 $screenColor-amber: #5c3f00;
 $screenBorder-amber: #222121;
 $radiance-amber: #ffd102; //radiance effect */
-
-$foregroundColor-amber: #ffd102;
-$screenColor-amber: #5c3f00;
-$screenBorder-amber: #222121;
-$radiance-amber: #ffbb00; //radiance effect
 
 // Define the palettes for your theme using theme monochrome palletes
 $RetroComputer-primary: mat.define-palette($monochrome-green-palette);
@@ -293,7 +297,7 @@ $secondary-backfround-amber: mat.get-color-from-palette($RetroComputer-accent, 9
   @include mat.paginator-theme($theme);
   @include mat.slide-toggle-theme($theme);
 
-//applies the theme to specific components contained in an element with class .themed
+//applies the theme to specific components contained in an element with class .themed. Specially to forms
   .themed{
     
     @include mat.option-theme($theme);
