@@ -3,7 +3,7 @@
     <mat-card-content class="dashboard-card-content">
         <div [fxLayout]="banner ? 'row' : 'column'" fxLayoutGap="8px">
             <div class="game-image" [fxFlex]="banner ? '70' : '60'" >
-                <img src="/../../../../../assets/images/{{game.image}}" alt="{{game.title}}" [ngClass]="banner ? 'fill' : ''">
+                <img src="assets/images/{{game.image}}" alt="{{game.title}}" [ngClass]="banner ? 'fill' : ''">
             </div>
             <div [fxFlex]="banner ? '30' : '40'" fxLayout="column" class="game-data" fxLayoutGap="8px">
                 <div class="game-title" [fxFlex]="banner ? '10' : 'none'">{{game.title}} </div>
